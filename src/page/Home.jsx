@@ -12,7 +12,8 @@ import { insertOrder, FetchTimeRule } from '../api/amitaApi';
 export const Home = () => {
   const [rule, setRule] = React.useState([]);
   const [day, setDay] = React.useState(new Date());
-  const [time, setTime] = React.useState([]);
+  const [time, setTime] = React.useState(null);
+  const [timeList, setTimeList] = React.useState([]);
   useEffect(() => {
     FetchTimeRule().then((res) => {
       setRule(res);
@@ -35,10 +36,16 @@ export const Home = () => {
         </div>
         <form>
           <div>
-            <DayCont day={day} onChange={setDay} />
+            <DayCont
+              rule={rule}
+              day={day}
+              onChange={setDay}
+              setTimeList={setTimeList}
+              timeList={timeList}
+            />
           </div>
           <div>
-            <TimeList rule={rule} selected={time} setSelected={setTime} day={day} />
+            <TimeList selected={time} setSelected={setTime} day={day} time={timeList} />
           </div>
           <div className="center">
             <div className="button mt-5" onClick={() => saveOrder()}>

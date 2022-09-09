@@ -1,7 +1,5 @@
 import React from 'react';
 
-//import { TimeContainer } from '../Buttons/TimeContainer';
-
 export const CompanyInfo = () => {
   return (
     <div>

@@ -31,10 +31,11 @@ export async function FetchOrderList() {
       console.log(error);
     });
 }
-export async function insertOrder(date) {
+export async function insertOrder(date, hour) {
   return await axios
     .post('http://localhost:8000/insertOrder', {
-      date: date
+      date: date,
+      hour: hour
     })
     .then((res) => {
       console.log(res);

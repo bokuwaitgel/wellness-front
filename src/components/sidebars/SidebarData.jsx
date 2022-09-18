@@ -14,5 +14,11 @@ export const SidebarData = [
     path: '/admin',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
+  },
+  {
+    title: 'Day control',
+    path: '/admin/day',
+    icon: <IoIcons.IoIosAlarm />,
+    cName: 'nav-text'
   }
 ];

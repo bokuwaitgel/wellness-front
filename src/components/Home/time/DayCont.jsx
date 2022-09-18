@@ -1,8 +1,12 @@
 import React from 'react';
 import Calendar from 'react-calendar';
+import { stateDefinitions } from '../../constants/calendar';
+import 'react-calendar/dist/Calendar.css';
+//import styled from 'styled-components';
+//const CalendarContainer = styled.div``;
 
 export const DayCont = (props) => {
-  const { day, onChange } = props;
+  const { day, onChange, check = true } = props;
   const currentDay = new Date();
   const [selected, setSelected] = React.useState(false);
   //const today = new Date();
@@ -13,21 +17,22 @@ export const DayCont = (props) => {
     setSelected(false);
   };
   return (
-    <div>
-      <div className="day-cont" onClick={() => setSelected(true)}>
-        <div>Үзлэгийн өдөр</div>
-        <div>
+    <div className="px-2">
+      <div className="day-cont box-content" onClick={() => setSelected(true)}>
+        <div className="w-1/2">Үзлэгийн өдөр</div>
+        <div className="w-1/2">
           {day.getMonth() + 1} сарын {day.getDate()}
         </div>
       </div>
       {selected && (
         <div className="center">
           <Calendar
+            stateDefinitions={stateDefinitions}
             onChange={(value) => {
               handleEvent(value);
             }}
             value={day}
-            minDate={currentDay}
+            minDate={check ? currentDay : null}
           />
         </div>
       )}

@@ -1,10 +1,9 @@
 import axios from 'axios';
-
+const server = 'http://localhost:4000';
 export async function FetchData() {
   return await axios
-    .get('http://localhost:8000/get')
+    .get(server + '/get')
     .then((res) => {
-      console.log(res.data);
       return res.data;
     })
     .catch((error) => {
@@ -13,7 +12,7 @@ export async function FetchData() {
 }
 export async function FetchTimeRule() {
   return await axios
-    .get('http://localhost:8000/getTimeRule')
+    .get(server + '/getTimeRule')
     .then((res) => {
       return res.data;
     })
@@ -23,7 +22,7 @@ export async function FetchTimeRule() {
 }
 export async function FetchOrderList() {
   return await axios
-    .get('http://localhost:8000/getOrderList')
+    .get(server + '/getOrderList')
     .then((res) => {
       return res.data;
     })
@@ -31,11 +30,15 @@ export async function FetchOrderList() {
       console.log(error);
     });
 }
-export async function insertOrder(date, hour) {
+export async function insertOrder(date, hour, type, checkoutId, userId) {
+  console.log(date, hour, type, checkoutId, userId);
   return await axios
-    .post('http://localhost:8000/insertOrder', {
+    .post(server + '/insertOrder', {
       date: date,
-      hour: hour
+      hour: hour,
+      status: type,
+      checkoutId: checkoutId,
+      userId: userId
     })
     .then((res) => {
       console.log(res);
@@ -45,11 +48,81 @@ export async function insertOrder(date, hour) {
       console.log(error);
     });
 }
+export async function insertUser(userID, firstname, lastname, phone, gmail) {
+  console.log(gmail);
+  return await axios
+    .post(server + '/insertUser', {
+      userID: userID,
+      firstname: firstname,
+      lastname: lastname,
+      phone: phone,
+      gmail: gmail
+    })
+    .then((res) => {
+      console.log(res);
+      return res;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+export async function findUser(userID) {
+  return await axios
+    .post(server + '/findUser', {
+      userID: userID
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 export async function findDate(date) {
   return await axios
-    .post('http://localhost:8000/findDate', {
+    .post(server + '/findDate', {
       date: date
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+export async function gerOrderUser(userId) {
+  return await axios
+    .post(server + '/getOrderUser', {
+      userID: userId
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+export async function updateOrder(payment, paid, checkoutId) {
+  return await axios
+    .post(server + '/updatePaymentId', {
+      payment: payment,
+      paid: paid,
+      checkoutId: checkoutId
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+export async function cancelOrder(date, hour) {
+  return await axios
+    .post(server + '/cancel', {
+      date: date,
+      hour: hour
     })
     .then((res) => {
       return res.data;

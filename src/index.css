@@ -297,14 +297,10 @@ svg.star-svg {
 }
 
 .time-button {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 6px 24px;
-  gap: 10px;
-  width: 101px;
-  height: 32px;
+  width: 100%;
   background: rgba(27, 207, 180, 0.1);
   color: #1BCFB4;
   border-radius: 4px;
@@ -313,9 +309,7 @@ svg.star-svg {
   justify-content: center;
   align-items: center;
   padding: 6px 24px;
-  gap: 10px;
-  width: 101px;
-  height: 32px;
+  width: 100%;
   background: #1BCFB4; 
   color: white;
   border-radius: 4px;
@@ -406,7 +400,7 @@ span {
 }
 
 .day-cont{
-  text-align: left;
+  display: flex;
   border: 1px solid black;
   border-radius: 5px;
   margin: 12px 24px;

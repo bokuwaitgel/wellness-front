@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { findDate } from '../../api/amitaApi';
+import { findDate } from '../../../api/amitaApi';
 function RevereseTimeConvertor(time) {
   return (
     parseInt(time / 3600).toString() +
@@ -11,7 +11,7 @@ function RevereseTimeConvertor(time) {
 }
 
 export const TimeList = (props) => {
-  const { day, time, selected, setSelected } = props;
+  const { day, time, selected, setSelected } = props || {};
   const data = day.getMonth() + 1 + '/' + day.getDate();
   const currentDay = new Date();
   const limit =
@@ -24,7 +24,6 @@ export const TimeList = (props) => {
       setOrderList(res);
     });
   }, [day]);
-  console.log(orderList);
   const findTime = (hour) => {
     const t = orderList.find((data) => data.hour === hour);
     if (t) return false;
@@ -32,9 +31,9 @@ export const TimeList = (props) => {
   };
 
   return (
-    <div>
+    <div className="px-8">
       <div className="text-left  ml-5">Боломжит цагууд</div>
-      <div className="grid grid-cols-3 grid-flow-row gap-4 place-items-center">
+      <div className="pt-4 grid grid-cols-3 grid-flow-row gap-4 place-items-center">
         {time?.map((t, idx) => {
           const converted = RevereseTimeConvertor(t);
           const check = selected === converted;

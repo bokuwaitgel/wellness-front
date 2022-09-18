@@ -1,5 +1,5 @@
 import axios from 'axios';
-const server = 'http://localhost:4000';
+const server = 'https://amita-backend.herokuapp.com';
 export async function FetchData() {
   return await axios
     .get(server + '/get')

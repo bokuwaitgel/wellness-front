@@ -131,3 +131,19 @@ export async function cancelOrder(date, hour) {
       console.log(error);
     });
 }
+
+export async function calendarAdd(start, end, summary, description) {
+  return await axios
+    .post(server + '/addGoogleCalender', {
+      start: start,
+      end: end,
+      summary: summary,
+      description: description
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}

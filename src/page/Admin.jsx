@@ -50,11 +50,8 @@ export const Admin = () => {
   }, []);
   const [filtered, setFiltered] = React.useState([]);
   useEffect(() => {
-    console.log('sdfdsf');
     setFiltered(orders?.filter((d) => d.date === day.getMonth() + 1 + '/' + day.getDate()));
-    console.log(filtered);
   }, [day, orders]);
-  console.log(filtered);
   return (
     <>
       <Head title="Admin" description="hello" />

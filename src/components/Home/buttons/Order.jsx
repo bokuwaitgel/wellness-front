@@ -22,7 +22,6 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList) =
 
 export const Order = (props) => {
   const { day, time, text, type, userId, setType, setOrderList } = props || {};
-  console.log(day, time, text, type, userId);
 
   const handleSubmit = () => {
     if (time !== null) {

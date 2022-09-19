@@ -11,9 +11,7 @@ export const OrderList = (props) => {
         res.map((d) => {
           if (d.paid === null) {
             getCheckoutInfo(d.checkoutId).then((res) => {
-              console.log(d.checkoutId);
               if (res.status === 'paid') {
-                console.log(res);
                 updateOrder(res.paymentId, res.status, d.checkoutId);
               }
             });

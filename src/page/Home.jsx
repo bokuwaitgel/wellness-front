@@ -26,7 +26,6 @@ export const Home = () => {
   const [token, setToken] = React.useState(null);
   const [type, setType] = React.useState(1);
   const [orderList, setOrderList] = React.useState([]);
-  //const [orderList, setOrderList] = React.useState([]);
 
   useEffect(() => {
     getAccessTokenV2(userID).then((tk) => setToken(tk));

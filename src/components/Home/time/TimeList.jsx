@@ -18,6 +18,7 @@ export const TimeList = (props) => {
     currentDay.getHours() * 3600 + currentDay.getMinutes() * 60 + currentDay.getSeconds();
   const today = currentDay.getDate() === day.getDate();
   const [orderList, setOrderList] = React.useState([]);
+  const [filteredTime, setFilteredTime] = React.useState(time);
 
   useEffect(() => {
     findDate(data).then((res) => {
@@ -30,23 +31,27 @@ export const TimeList = (props) => {
     return true;
   };
 
+  useEffect(() => {
+    setFilteredTime(
+      time.filter((d) => findTime(RevereseTimeConvertor(d)) && (today ? limit < d : true))
+    );
+  }, [orderList]);
+
   return (
     <div className="px-8">
       <div className="text-left  ml-5">Боломжит цагууд</div>
       <div className="pt-4 grid grid-cols-3 grid-flow-row gap-4 place-items-center">
-        {time?.map((t, idx) => {
+        {filteredTime?.map((t, idx) => {
           const converted = RevereseTimeConvertor(t);
           const check = selected === converted;
-          if ((today ? limit < t : true) && findTime(converted)) {
-            return (
-              <div
-                key={parseInt(idx) + 1}
-                onClick={() => (check ? setSelected(null) : setSelected(converted))}
-                className={check ? 'selected-time-button' : 'time-button'}>
-                {converted}
-              </div>
-            );
-          }
+          return (
+            <div
+              key={parseInt(idx) + 1}
+              onClick={() => (check ? setSelected(null) : setSelected(converted))}
+              className={check ? 'selected-time-button' : 'time-button'}>
+              {converted}
+            </div>
+          );
         })}
       </div>
     </div>

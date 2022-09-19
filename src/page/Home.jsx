@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react';
 
 import { Head } from '../components/Head';
-import { TimeList } from '../components/Home/time/TimeList';
-import { DayCont } from '../components/Home/time/DayCont';
 import { CompanyInfo } from '../components/Home/company/CompanyInfo';
 import { CompanyHeader } from '../components/Home/company/CompanyHeader';
-import { ChangeButton } from '../components/Home/buttons/changeButton';
-import { OrderList } from '../components/Home/order/OrderList';
 import { FetchTimeRule, findUser, insertUser } from '../api/amitaApi';
 import { getAccessTokenV2, getUserInfo } from '../api/miniAppApi';
-import { Order } from '../components/Home/buttons/Order';
+import { MainContent } from '../components/Home/BodyCont';
 
 function timeConvertor(time) {
   if (!time) return 0;
@@ -24,7 +20,7 @@ export const Home = () => {
   const [time, setTime] = React.useState(null);
   const [timeList, setTimeList] = React.useState([]);
   const [token, setToken] = React.useState(null);
-  const [type, setType] = React.useState(1);
+  const [type, setType] = React.useState(0);
   const [orderList, setOrderList] = React.useState([]);
 
   useEffect(() => {
@@ -61,33 +57,19 @@ export const Home = () => {
           <CompanyHeader />
         </div>
         <div>
-          <ChangeButton type={type} setType={setType} />
+          <MainContent
+            type={type}
+            day={day}
+            setDay={setDay}
+            time={time}
+            setTime={setTime}
+            timeList={timeList}
+            setOrderList={setOrderList}
+            setType={setType}
+            userId={userID}
+            orderList={orderList}
+          />
         </div>
-        {type === 1 ? (
-          <form>
-            <div>
-              <DayCont day={day} onChange={setDay} />
-            </div>
-            <div>
-              <TimeList selected={time} setSelected={setTime} day={day} time={timeList} />
-            </div>
-            <div className="center">
-              <Order
-                setOrderList={setOrderList}
-                day={day}
-                time={time}
-                text={'Захиалах'}
-                type={'order'}
-                setType={setType}
-                userId={userID}
-              />
-            </div>
-          </form>
-        ) : (
-          <div>
-            <OrderList orderList={orderList} setOrderList={setOrderList} userId={userID} />
-          </div>
-        )}
         <div>
           <CompanyInfo />
         </div>

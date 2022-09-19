@@ -14,7 +14,7 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList) =
       })
       .catch((err) => alert(err));
 
-    setType(2);
+    setType(1);
   } else {
     insertOrder(date, time, type, null, userId);
   }

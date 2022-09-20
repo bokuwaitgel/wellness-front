@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../assets/test.jpg';
+import logo from '../../../assets/amitalogo.png';
 
 //import { TimeContainer } from '../Buttons/TimeContainer';
 

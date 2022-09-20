@@ -31,7 +31,6 @@ export async function FetchOrderList() {
     });
 }
 export async function insertOrder(date, hour, type, checkoutId, userId) {
-  console.log(date, hour, type, checkoutId, userId);
   return await axios
     .post(server + '/insertOrder', {
       date: date,
@@ -49,7 +48,6 @@ export async function insertOrder(date, hour, type, checkoutId, userId) {
     });
 }
 export async function insertUser(userID, firstname, lastname, phone, gmail) {
-  console.log(gmail);
   return await axios
     .post(server + '/insertUser', {
       userID: userID,
@@ -59,7 +57,6 @@ export async function insertUser(userID, firstname, lastname, phone, gmail) {
       gmail: gmail
     })
     .then((res) => {
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -141,7 +138,6 @@ export async function calendarAdd(start, end, summary, description) {
       description: description
     })
     .then((res) => {
-      console.log(res.data);
       return res.data;
     })
     .catch((error) => {

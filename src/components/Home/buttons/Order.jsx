@@ -8,7 +8,6 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, d
     .then((res) => {
       if (res) {
         findUser(userId).then((result) => {
-          console.log(result);
           const start = new Date(day.getFullYear(), day.getMonth(), day.getDate());
           const end = new Date(day.getFullYear(), day.getMonth(), day.getDate());
           const hm = time?.split(':');
@@ -20,8 +19,8 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, d
           calendarAdd(
             start,
             end,
-            result.firstname,
-            'phone: ' + result.phone + (result.gmail ? '\n gmail: ' + result.gmail : '')
+            result[0].firstname,
+            'phone: ' + result[0].phone + (result[0].gmail ? '\n gmail: ' + result[0].gmail : '')
           );
         });
         setOrderList((i) => [...i, { date: date, hour: time, paid: null, checkoutId: checkoutId }]);

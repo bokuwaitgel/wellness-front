@@ -141,6 +141,21 @@ export async function calendarAdd(start, end, summary, description) {
       description: description
     })
     .then((res) => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+export async function calendarList(start, end) {
+  return await axios
+    .post(server + '/getGoogleTime', {
+      start: start,
+      end: end
+    })
+    .then((res) => {
       return res.data;
     })
     .catch((error) => {

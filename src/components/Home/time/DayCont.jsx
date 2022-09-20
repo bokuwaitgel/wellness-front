@@ -2,16 +2,11 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import { stateDefinitions } from '../../constants/calendar';
 import 'react-calendar/dist/Calendar.css';
-//import styled from 'styled-components';
-//const CalendarContainer = styled.div``;
 
 export const DayCont = (props) => {
   const { day, onChange, check = true } = props;
   const currentDay = new Date();
   const [selected, setSelected] = React.useState(false);
-  //const today = new Date();
-  // const limit = today.getHours() * 3600 + today.getMinutes() * 60 + today.getSeconds();
-  // const data = day.getMonth() + 1 + '/' + day.getDate() + ' ';
   const handleEvent = (value) => {
     onChange(value);
     setSelected(false);

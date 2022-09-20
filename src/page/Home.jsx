@@ -4,7 +4,7 @@ import { Head } from '../components/Head';
 import { CompanyInfo } from '../components/Home/company/CompanyInfo';
 import { CompanyHeader } from '../components/Home/company/CompanyHeader';
 import { ChangeButton } from '../components/Home/buttons/changeButton';
-import { FetchTimeRule, findUser, insertUser } from '../api/amitaApi';
+import { FetchTimeRule, findUser, insertUser, calendarList } from '../api/amitaApi';
 import { getAccessTokenV2, getUserInfo } from '../api/miniAppApi';
 import { OrderList } from '../components/Home/order/OrderList';
 import { OrderCont } from '../components/Home/order/OrderCont';
@@ -24,6 +24,9 @@ export const Home = () => {
   const [type, setType] = React.useState(0);
   const [orderList, setOrderList] = React.useState([]);
   const [delay, setDelay] = React.useState('00:30:00');
+  const [start, setStart] = React.useState('08:00:00');
+  const [end, setEnd] = React.useState('18:00:00');
+  const [calendarData, setCalendarData] = React.useState([]);
   useEffect(() => {
     getAccessTokenV2(userID).then((tk) => setToken(tk));
     if (timeList.length === 0) {
@@ -32,6 +35,17 @@ export const Home = () => {
         const end = timeConvertor(res[0]?.end);
         const delay = timeConvertor(res[0]?.delay);
         setDelay(res[0]?.delay);
+        setStart(res[0]?.start);
+        setEnd(res[0]?.end);
+        const st = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+        const ed = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+        const hm = res[0]?.start.split(':');
+        const dl = res[0]?.end.split(':');
+        st.setHours(parseInt(hm[0]));
+        ed.setHours(parseInt(dl[0]));
+        st.setMinutes(parseInt(hm[1]));
+        ed.setMinutes(parseInt(dl[1]));
+        calendarList(st, ed).then((res) => setCalendarData(res));
         for (let s = start; s < end; s += delay) {
           setTimeList((i) => [...i, s]);
         }
@@ -65,6 +79,8 @@ export const Home = () => {
           <div>
             <OrderCont
               day={day}
+              start={start}
+              end={end}
               delay={delay}
               setDay={setDay}
               time={time}
@@ -73,6 +89,8 @@ export const Home = () => {
               setOrderList={setOrderList}
               setType={setType}
               userID={userID}
+              calendarData={calendarData}
+              setCalendarData={setCalendarData}
             />
           </div>
         ) : (

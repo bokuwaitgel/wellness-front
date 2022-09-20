@@ -4,8 +4,21 @@ import { TimeList } from '../time/TimeList';
 import { Order } from '../buttons/Order';
 
 export const OrderCont = (props) => {
-  const { day, setDay, timeList, time, setTime, setOrderList, setType, userID, delay } =
-    props || {};
+  const {
+    day,
+    setDay,
+    timeList,
+    time,
+    setTime,
+    setOrderList,
+    setType,
+    userID,
+    start,
+    end,
+    delay,
+    calendarData,
+    setCalendarData
+  } = props || {};
   return (
     <div>
       <form>
@@ -13,7 +26,17 @@ export const OrderCont = (props) => {
           <DayCont day={day} onChange={setDay} />
         </div>
         <div>
-          <TimeList selected={time} setSelected={setTime} day={day} time={timeList} />
+          <TimeList
+            selected={time}
+            setSelected={setTime}
+            day={day}
+            time={timeList}
+            start={start}
+            end={end}
+            delay={delay}
+            calendarData={calendarData}
+            setCalendarData={setCalendarData}
+          />
         </div>
         <div className="center">
           <Order

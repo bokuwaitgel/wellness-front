@@ -8,6 +8,7 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, d
     .then((res) => {
       if (res) {
         findUser(userId).then((result) => {
+          console.log(result);
           const start = new Date(day.getFullYear(), day.getMonth(), day.getDate());
           const end = new Date(day.getFullYear(), day.getMonth(), day.getDate());
           const hm = time?.split(':');

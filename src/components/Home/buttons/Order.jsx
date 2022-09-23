@@ -23,7 +23,7 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, d
             'phone: ' + result[0].phone + (result[0].gmail ? '\n gmail: ' + result[0].gmail : '')
           ).then((data) => {
             updateEventID(data?.data.data.id, checkoutId);
-            console.log(data?.data.data.id);
+            console.log(data);
           });
           setOrderList((i) => [
             ...i,

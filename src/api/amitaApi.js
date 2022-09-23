@@ -115,7 +115,7 @@ export async function updateOrder(payment, paid, checkoutId) {
 }
 export async function updateEventID(id, checkoutId) {
   return await axios
-    .post(server + '/updatePaymentId', {
+    .post(server + '/updateEventID', {
       id: id,
       checkoutId: checkoutId
     })

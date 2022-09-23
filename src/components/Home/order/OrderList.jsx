@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { gerOrderUser, updateOrder } from '../../../api/amitaApi';
+import { gerOrderUser, updateOrder, calendarUpdate } from '../../../api/amitaApi';
 import { getCheckoutInfo } from '../../../api/miniAppApi';
 
 export const OrderList = (props) => {
@@ -13,6 +13,7 @@ export const OrderList = (props) => {
             getCheckoutInfo(d.checkoutId).then((res) => {
               if (res.status === 'paid') {
                 updateOrder(res.paymentId, res.status, d.checkoutId);
+                calendarUpdate(res.eventID);
               }
             });
           }

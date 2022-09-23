@@ -40,7 +40,6 @@ export async function insertOrder(date, hour, type, checkoutId, userId) {
       userId: userId
     })
     .then((res) => {
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -138,7 +137,7 @@ export async function calendarAdd(start, end, summary, description) {
       description: description
     })
     .then((res) => {
-      return res.data;
+      return res;
     })
     .catch((error) => {
       console.log(error);

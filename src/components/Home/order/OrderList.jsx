@@ -12,6 +12,7 @@ export const OrderList = (props) => {
           res.map((d) => {
             if (d.paid === null) {
               getCheckoutInfo(d.checkoutId).then((re) => {
+                console.log(res);
                 if (re.status === 'paid') {
                   updateOrder(re.paymentId, re.status, d.checkoutId);
                   calendarUpdate(

@@ -113,10 +113,12 @@ export async function updateOrder(payment, paid, checkoutId) {
       console.log(error);
     });
 }
-export async function updateEventID(id, checkoutId) {
+export async function updateEventID(id, end, start, checkoutId) {
   return await axios
     .post(server + '/updateEventID', {
       id: id,
+      end: end,
+      start: start,
       checkoutId: checkoutId
     })
     .then((res) => {

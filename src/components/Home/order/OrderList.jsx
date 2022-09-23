@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { gerOrderUser, updateOrder, calendarUpdate } from '../../../api/amitaApi';
+import { gerOrderUser, updateOrder, calendarUpdate, findUser } from '../../../api/amitaApi';
 import { getCheckoutInfo } from '../../../api/miniAppApi';
 
 export const OrderList = (props) => {
@@ -7,16 +7,25 @@ export const OrderList = (props) => {
 
   useEffect(() => {
     const setOrder = () => {
-      gerOrderUser(userId).then((res) => {
-        res.map((d) => {
-          if (d.paid === null) {
-            getCheckoutInfo(d.checkoutId).then((res) => {
-              if (res.status === 'paid') {
-                updateOrder(res.paymentId, res.status, d.checkoutId);
-                calendarUpdate(res.eventID);
-              }
-            });
-          }
+      findUser(userId).then((result) => {
+        gerOrderUser(userId).then((res) => {
+          res.map((d) => {
+            if (d.paid === null) {
+              getCheckoutInfo(d.checkoutId).then((re) => {
+                if (re.status === 'paid') {
+                  updateOrder(re.paymentId, re.status, d.checkoutId);
+                  calendarUpdate(
+                    res.eventID,
+                    result[0].firstname,
+                    'phone: ' +
+                      result[0].phone +
+                      (result[0].gmail ? '\n gmail: ' + result[0].gmail : '') +
+                      '\nPaid'
+                  );
+                }
+              });
+            }
+          });
         });
       });
       gerOrderUser(userId).then((res) => {

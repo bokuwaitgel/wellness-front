@@ -21,7 +21,7 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, d
             end,
             result[0].firstname,
             'phone: ' + result[0].phone + (result[0].gmail ? '\n gmail: ' + result[0].gmail : '')
-          );
+          ).then((res) => console.log(res));
         });
         setOrderList((i) => [...i, { date: date, hour: time, paid: null, checkoutId: checkoutId }]);
       }

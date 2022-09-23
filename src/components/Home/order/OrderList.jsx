@@ -23,7 +23,7 @@ export const OrderList = (props) => {
                       result[0].phone +
                       (result[0].gmail ? '\n gmail: ' + result[0].gmail : '') +
                       '\nPaid'
-                  );
+                  ).then((res) => console.log(res));
                 }
               });
             }

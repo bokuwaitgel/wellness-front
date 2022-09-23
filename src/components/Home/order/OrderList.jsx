@@ -17,6 +17,8 @@ export const OrderList = (props) => {
                   calendarUpdate(
                     res.eventID,
                     result[0].firstname,
+                    d.startTime,
+                    d.endTime,
                     'phone: ' +
                       result[0].phone +
                       (result[0].gmail ? '\n gmail: ' + result[0].gmail : '') +

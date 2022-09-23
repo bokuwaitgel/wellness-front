@@ -172,10 +172,14 @@ export async function calendarList(start, end) {
       console.log(error);
     });
 }
-export async function calendarUpdate(id) {
+export async function calendarUpdate(id, start, end, summary, description) {
   return await axios
     .post(server + '/updateEvent', {
-      id: id
+      id: id,
+      start: start,
+      end: end,
+      summary: summary,
+      description: description
     })
     .then((res) => {
       return res.data;

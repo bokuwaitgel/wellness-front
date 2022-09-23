@@ -16,9 +16,9 @@ export const OrderList = (props) => {
                   updateOrder(re.paymentId, re.status, d.checkoutId);
                   calendarUpdate(
                     res.eventID,
-                    result[0].firstname,
                     d.startTime,
                     d.endTime,
+                    result[0].firstname,
                     'phone: ' +
                       result[0].phone +
                       (result[0].gmail ? '\n gmail: ' + result[0].gmail : '') +

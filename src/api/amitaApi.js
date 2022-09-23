@@ -113,6 +113,19 @@ export async function updateOrder(payment, paid, checkoutId) {
       console.log(error);
     });
 }
+export async function updateEventID(id, checkoutId) {
+  return await axios
+    .post(server + '/updatePaymentId', {
+      id: id,
+      checkoutId: checkoutId
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 export async function cancelOrder(date, hour) {
   return await axios
@@ -149,6 +162,18 @@ export async function calendarList(start, end) {
     .post(server + '/getGoogleTime', {
       start: start,
       end: end
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+export async function calendarUpdate(id) {
+  return await axios
+    .post(server + '/updateEvent', {
+      id: id
     })
     .then((res) => {
       return res.data;

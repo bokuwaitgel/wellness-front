@@ -1,6 +1,6 @@
 import React from 'react';
 import { checkout } from '../../../api/miniAppApi';
-import { insertOrder, calendarAdd, findUser } from '../../../api/amitaApi';
+import { insertOrder, calendarAdd, findUser, updateEventID } from '../../../api/amitaApi';
 
 const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, delay) => {
   const date = day.getMonth() + 1 + '/' + day.getDate();
@@ -21,9 +21,20 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, d
             end,
             result[0].firstname,
             'phone: ' + result[0].phone + (result[0].gmail ? '\n gmail: ' + result[0].gmail : '')
-          ).then((res) => console.log(res));
+          ).then((data) => {
+            updateEventID(data?.data.data.id, checkoutId);
+            console.log(data?.data.data.id);
+          });
+          setOrderList((i) => [
+            ...i,
+            {
+              date: date,
+              hour: time,
+              paid: null,
+              checkoutId: checkoutId
+            }
+          ]);
         });
-        setOrderList((i) => [...i, { date: date, hour: time, paid: null, checkoutId: checkoutId }]);
       }
     })
     .catch((err) => alert(err));

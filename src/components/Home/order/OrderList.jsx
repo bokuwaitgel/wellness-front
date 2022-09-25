@@ -16,7 +16,7 @@ export const OrderList = (props) => {
                 if (re.status === 'paid') {
                   updateOrder(re.paymentId, re.status, d.checkoutId);
                   calendarUpdate(
-                    res.eventID,
+                    d.eventID,
                     d.startTime,
                     d.endTime,
                     result[0].firstname,

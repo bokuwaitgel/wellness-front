@@ -2,7 +2,7 @@ import React from 'react';
 import { checkout } from '../../../api/miniAppApi';
 import { insertOrder, calendarAdd, findUser, updateEventID } from '../../../api/amitaApi';
 
-const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, delay) => {
+const saveOrder = (day, time, type, checkoutId, userId, setType, delay) => {
   const date = day.getMonth() + 1 + '/' + day.getDate();
   insertOrder(date, time, type, checkoutId, userId)
     .then((res) => {
@@ -29,15 +29,6 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, setOrderList, d
               checkoutId
             );
           });
-          setOrderList((i) => [
-            ...i,
-            {
-              date: date,
-              hour: time,
-              paid: null,
-              checkoutId: checkoutId
-            }
-          ]);
         });
       }
     })

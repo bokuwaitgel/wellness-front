@@ -10,6 +10,7 @@ export const OrderList = (props) => {
       findUser(userId).then((result) => {
         gerOrderUser(userId).then((res) => {
           res.map((d) => {
+            console.log(d);
             if (d.paid === null) {
               getCheckoutInfo(d.checkoutId).then((re) => {
                 console.log(res);

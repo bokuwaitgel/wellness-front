@@ -400,6 +400,7 @@ span {
 }
 
 .day-cont {
+  display: flex;
   border: 1px solid black;
   border-radius: 5px;
   margin: 12px 24px;

@@ -12,7 +12,7 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, delay) => {
           const end = new Date(day.getFullYear(), day.getMonth(), day.getDate());
           const hm = time?.split(':');
           const dl = delay?.split(':');
-          start.setHours(parseInt(hm[0]) + parseInt(hm[0]));
+          start.setHours(parseInt(hm[0]));
           end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
           start.setMinutes(parseInt(hm[1]));
           end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));

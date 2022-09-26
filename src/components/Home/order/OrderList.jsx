@@ -16,8 +16,8 @@ export const OrderList = (props) => {
                   updateOrder(re.paymentId, re.status, d.checkoutId);
                   const start = new Date(d.startTime);
                   const end = new Date(d.endTime);
-                  start.setHours(start.getHours - 8);
-                  end.setHours(end.getHours - 8);
+                  start.setHours(start.getHours() - 8);
+                  end.setHours(end.getHours() - 8);
                   if (d.eventID && d.startTime && d.endTime) {
                     calendarUpdate(
                       d.eventID,

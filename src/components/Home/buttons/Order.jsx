@@ -22,6 +22,7 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, delay) => {
             result[0].firstname,
             'phone: ' + result[0].phone + (result[0].gmail ? '\n gmail: ' + result[0].gmail : '')
           ).then((data) => {
+            console.log(data);
             updateEventID(
               data?.data.data.id,
               data?.data.data.end.dateTime,

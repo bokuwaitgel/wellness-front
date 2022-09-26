@@ -46,20 +46,15 @@ export const OrderList = (props) => {
     return () => clearInterval(timer);
   }, []);
 
-  const handleEvent = (paid, checkoutId) => {
-    if (!paid) window.hpsPayment(checkoutId);
-  };
   return (
     <div className="px-2">
       {orderList.map((data, idx) => {
+        const d = data.data.split('/');
         return (
-          <div
-            key={idx}
-            className={`flex space-x day-cont ${!data.paid ? 'bg-orange' : 'bg-green'}`}
-            onClick={() => handleEvent(data.paid, data.checkoutId)}>
-            <div className="pl-4 w-1/3">{data.date}</div>
-            <div className="pl-4 w-1/3">{data.hour}</div>
-            <div className="w-1/3 center">{!data.paid ? 'Төлөгдөөгүй' : 'Төлөгдсөн'}</div>
+          <div key={idx} className={`flex space-x day-cont bg-green`}>
+            <div className="pl-4">
+              {d[0]} сарын {d[1]} ны {data.hour}
+            </div>
           </div>
         );
       })}

@@ -51,7 +51,8 @@ export async function checkout() {
       {
         entityId: 'amita001',
         amount: '5000',
-        currency: 'MNT'
+        currency: 'MNT',
+        redirect_uri: 'https://amita-backend.herokuapp.com/webhook'
       },
       {
         headers: {

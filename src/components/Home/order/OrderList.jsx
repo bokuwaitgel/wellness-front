@@ -38,7 +38,7 @@ export const OrderList = (props) => {
       });
 
       gerOrderUser(userId).then((res) => {
-        setOrderList(res.revere());
+        setOrderList(res.reverse());
       });
     };
     setOrder();

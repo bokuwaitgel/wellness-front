@@ -130,20 +130,6 @@ export async function updateEventID(id, end, start, checkoutId) {
     });
 }
 
-export async function cancelOrder(date, hour) {
-  return await axios
-    .post(server + '/cancel', {
-      date: date,
-      hour: hour
-    })
-    .then((res) => {
-      return res.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
 export async function calendarAdd(start, end, summary, description) {
   return await axios
     .post(server + '/addGoogleCalender', {

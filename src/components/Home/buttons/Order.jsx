@@ -16,12 +16,14 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, delay) => {
           end.setHours(parseInt(hm[0]));
           start.setMinutes(parseInt(hm[1]));
           end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
+          console.log(start, end);
           calendarAdd(
             start,
             end,
             result[0].firstname,
             'phone: ' + result[0].phone + (result[0].gmail ? '\n gmail: ' + result[0].gmail : '')
           ).then((data) => {
+            console.log(data);
             updateEventID(
               data?.data.data.id,
               data?.data.data.end.dateTime,

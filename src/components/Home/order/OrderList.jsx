@@ -16,16 +16,18 @@ export const OrderList = (props) => {
                 console.log(res);
                 if (re.status === 'paid') {
                   updateOrder(re.paymentId, re.status, d.checkoutId);
-                  calendarUpdate(
-                    d.eventID,
-                    d.startTime,
-                    d.endTime,
-                    result[0].firstname,
-                    'phone: ' +
-                      result[0].phone +
-                      (result[0].gmail ? '\n gmail: ' + result[0].gmail : '') +
-                      '\nPaid'
-                  ).then((res) => console.log(res));
+                  if (d.eventID && d.startTime && d.endTime) {
+                    calendarUpdate(
+                      d.eventID,
+                      d.startTime,
+                      d.endTime,
+                      result[0].firstname,
+                      'phone: ' +
+                        result[0].phone +
+                        (result[0].gmail ? '\n gmail: ' + result[0].gmail : '') +
+                        '\nPaid'
+                    ).then((res) => console.log(res));
+                  }
                 }
               });
             }

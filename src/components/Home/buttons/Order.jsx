@@ -40,11 +40,11 @@ const saveOrder = (day, time, type, checkoutId, userId, setType, delay) => {
 };
 
 export const Order = (props) => {
-  const { day, time, text, type, userId, setType, setOrderList, delay } = props || {};
+  const { day, time, text, type, userId, setType, delay } = props || {};
   const handleSubmit = () => {
     if (time !== null) {
       checkout().then((res) => {
-        saveOrder(day, time, type, res.checkoutId, userId, setType, setOrderList, delay);
+        saveOrder(day, time, type, res.checkoutId, userId, setType, delay);
         window.hpsPayment(res.checkoutId);
       });
     } else {

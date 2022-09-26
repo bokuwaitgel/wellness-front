@@ -10,17 +10,15 @@ export const OrderList = (props) => {
       findUser(userId).then((result) => {
         gerOrderUser(userId).then((res) => {
           res.map((d) => {
-            console.log(d);
             if (d.paid === null) {
               getCheckoutInfo(d.checkoutId).then((re) => {
-                console.log(res);
                 if (re.status === 'paid') {
                   updateOrder(re.paymentId, re.status, d.checkoutId);
                   if (d.eventID && d.startTime && d.endTime) {
                     calendarUpdate(
                       d.eventID,
-                      d.startTime,
-                      d.endTime,
+                      Date(d.startTime),
+                      Date(d.endTime),
                       result[0].firstname,
                       'phone: ' +
                         result[0].phone +

@@ -131,7 +131,6 @@ export async function updateEventID(id, end, start, checkoutId) {
 }
 
 export async function calendarAdd(start, end, summary, description) {
-  console.log(start, end);
   return await axios
     .post(server + '/addGoogleCalender', {
       start: start,
@@ -162,7 +161,6 @@ export async function calendarList(start, end) {
 }
 
 export async function calendarUpdate(id, start, end, summary, description) {
-  console.log(id, start, end, summary, description);
   return await axios
     .post(server + '/updateEvent', {
       id: id,

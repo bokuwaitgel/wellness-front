@@ -45,6 +45,7 @@ export const TimeList = (props) => {
     st.setMinutes(parseInt(hm[1]));
     ed.setMinutes(parseInt(dl[1]));
     calendarList(st, ed).then((res) => setCalendarData(res));
+    console.log(calendarData);
   }, [day]);
 
   useEffect(() => {

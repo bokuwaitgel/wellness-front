@@ -5,7 +5,9 @@
 @tailwind utilities;
 
 body {
-  font-family: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 html,
@@ -23,13 +25,13 @@ nav * {
   outline: none;
 }
 .bordered-button {
-  border: 1px solid #2455E4;
+  border: 1px solid #2455e4;
   border-radius: 2.5rem;
-  color: #646E7B
+  color: #646e7b;
 }
 .home-text-wrapper {
   position: relative;
-  padding:2rem;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -39,7 +41,7 @@ nav * {
   color: #212932;
   z-index: 1;
 }
-.home-text-blur{
+.home-text-blur {
   z-index: -1;
   position: absolute;
   height: 100%;
@@ -153,10 +155,10 @@ nav * {
   }
 }
 .opacityBackground {
-  background-color:rgba(31, 31, 31, 0.04);
+  background-color: rgba(31, 31, 31, 0.04);
 }
 .disableBackground {
-  background-color:#C4C4C4;
+  background-color: #c4c4c4;
 }
 .icon-button svg {
   height: 1.5rem;
@@ -166,22 +168,22 @@ nav * {
 svg.star-svg {
   display: inline;
 }
-.OCcolor{
-  color:#2455E4
+.OCcolor {
+  color: #2455e4;
 }
-.arrow-cont{
-  border: 1px solid #2455E4;
+.arrow-cont {
+  border: 1px solid #2455e4;
   border-radius: 40px;
   width: 56px;
   height: 56px;
 }
 
-.font-man{
+.font-man {
   font-family: 'Manrope', sans-serif;
   font-style: normal;
 }
 
-.question-id{
+.question-id {
   font-weight: 600;
   font-size: 18px;
 
@@ -277,7 +279,6 @@ svg.star-svg {
     font-size: 1rem;
     line-height: 1.5rem;
     font-weight: 500;
-
   }
 
   .font-body-m {
@@ -302,7 +303,7 @@ svg.star-svg {
   padding: 6px 24px;
   width: 100%;
   background: rgba(27, 207, 180, 0.1);
-  color: #1BCFB4;
+  color: #1bcfb4;
   border-radius: 4px;
 }
 .selected-time-button {
@@ -310,11 +311,10 @@ svg.star-svg {
   align-items: center;
   padding: 6px 24px;
   width: 100%;
-  background: #1BCFB4; 
+  background: #1bcfb4;
   color: white;
   border-radius: 4px;
 }
-
 
 .button {
   align-self: center;
@@ -322,7 +322,7 @@ svg.star-svg {
   gap: 16px;
   width: 327px;
   height: 40px;
-  background: #1BCFB4;
+  background: #1bcfb4;
   border-radius: 30px;
 }
 
@@ -399,16 +399,16 @@ span {
   margin-left: 16px;
 }
 
-.day-cont{
-  display: flex;
+.day-cont {
   border: 1px solid black;
   border-radius: 5px;
   margin: 12px 24px;
   padding: 8px;
 }
 
-
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
 }

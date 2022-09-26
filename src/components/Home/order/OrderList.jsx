@@ -52,7 +52,7 @@ export const OrderList = (props) => {
         console.log(data.date);
         const d = data.date.split('/');
         return (
-          <div key={idx} className={`flex space-x day-cont bg-green m-4 text-justify`}>
+          <div key={idx} className={`text-justify space-x day-cont bg-green m-4`}>
             {d[0]} сарын {d[1]} ны {data.hour}
           </div>
         );

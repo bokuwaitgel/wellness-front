@@ -13,7 +13,7 @@ export async function getAccessToken() {
     method: 'post',
     data: {
       // eslint-disable-next-line prettier/prettier
-      'client_id': 'amita001',
+      client_id: 'amita001',
       client_secret: 'Trk4UNHt58LqDwRL4adsXV',
       redirect_uri: 'xcvx',
       code: 'E839285840B26E1EE0532A65A8C0FE6A',
@@ -35,7 +35,7 @@ export async function getAccessTokenV2(code) {
     .post('/v2/auth/token', {
       client_id: 'amita001',
       client_secret: 'Trk4UNHt58LqDwRL4adsXV',
-      redirect_uri: 'xcvx',
+      redirect_uri: 'https://amita-front.herokuapp.com/access/',
       code: code,
       grant_type: 'authorization_code'
     })

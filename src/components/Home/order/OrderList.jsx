@@ -14,11 +14,15 @@ export const OrderList = (props) => {
               getCheckoutInfo(d.checkoutId).then((re) => {
                 if (re.status === 'paid') {
                   updateOrder(re.paymentId, re.status, d.checkoutId);
+                  const start = new Date(d.startTime);
+                  const end = new Date(d.endTime);
+                  start.setHours(start.getHours - 8);
+                  end.setHours(end.getHours - 8);
                   if (d.eventID && d.startTime && d.endTime) {
                     calendarUpdate(
                       d.eventID,
-                      new Date(d.startTime),
-                      new Date(d.endTime),
+                      start,
+                      end,
                       result[0].firstname,
                       'phone: ' +
                         result[0].phone +

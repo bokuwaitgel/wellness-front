@@ -49,8 +49,8 @@ export const OrderList = (props) => {
   return (
     <div className="px-2">
       {orderList.map((data, idx) => {
-        console.log(data.data);
-        const d = data.data.split('/');
+        console.log(data.date);
+        const d = data.date.split('/');
         return (
           <div key={idx} className={`flex space-x day-cont bg-green`}>
             <div className="pl-4">

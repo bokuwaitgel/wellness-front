@@ -14,7 +14,7 @@ export const DayCont = (props) => {
   return (
     <div className="px-2">
       <div className="day-cont box-content" onClick={() => setSelected(true)}>
-        <div className="w-1/2">Үзлэгийн өдөр</div>
+        <div className="w-1/2">Өдөр сонгох</div>
         <div className="w-1/2">
           {day.getMonth() + 1} сарын {day.getDate()}
         </div>

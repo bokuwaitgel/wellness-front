@@ -73,18 +73,30 @@ export const TimeList = (props) => {
     <div className="px-8">
       <div className="text-left  ml-5">Боломжит цагууд</div>
       <div className="pt-4 grid grid-cols-3 grid-flow-row gap-4 place-items-center">
-        {filteredTime?.map((t, idx) => {
-          const converted = RevereseTimeConvertor(t);
-          const check = selected === converted;
-          return (
-            <div
-              key={parseInt(idx) + 1}
-              onClick={() => (check ? setSelected(null) : setSelected(converted))}
-              className={check ? 'selected-time-button' : 'time-button'}>
-              {converted}
-            </div>
-          );
-        })}
+        {filteredTime.length > 0 ? (
+          filteredTime.map((t, idx) => {
+            const converted = RevereseTimeConvertor(t);
+            const check = selected === converted;
+            return (
+              <div
+                key={parseInt(idx) + 1}
+                onClick={() => (check ? setSelected(null) : setSelected(converted))}
+                className={check ? 'selected-time-button' : 'time-button'}>
+                {converted}
+              </div>
+            );
+          })
+        ) : (
+          <div className="col-span-full time-button">Боломжит цаг байхгүй байна</div>
+        )}
+      </div>
+      <div className="text-left text-xs p-5">
+        Жич:
+        <br />
+        1. Таны захиалсан цаг төлбөр төлж баталгаажсан тохиолдолд цагаасаа хоцрох болон цаг цуцлахад
+        буцааж олгогдохгүйг анхаарна уу! <br />
+        2. Захиалсан цагаас 1-3 минут хоцорсон тохиолдолд оншилгоо болон бусад үйлчилгээ авах
+        боломжгүй болохыг анхаарна уу!
       </div>
     </div>
   );

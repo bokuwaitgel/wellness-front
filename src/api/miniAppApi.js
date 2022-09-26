@@ -1,34 +1,6 @@
 import { apiClient } from './apiClient';
 
 export const stsBase = 'https://test.hipay.mn';
-export async function getAccessToken() {
-  console.log({
-    client_id: 'amita001',
-    client_secret: 'Trk4UNHt58LqDwRL4adsXV',
-    redirect_uri: 'xcvx',
-    code: 'E8655E60BE7F5627E0532A65A8C0C391',
-    grant_type: 'authorization_code'
-  });
-  fetch('https://test.hipay.mn/v2/auth/token', {
-    method: 'post',
-    data: {
-      // eslint-disable-next-line prettier/prettier
-      client_id: 'amita001',
-      client_secret: 'Trk4UNHt58LqDwRL4adsXV',
-      redirect_uri: 'xcvx',
-      code: 'E839285840B26E1EE0532A65A8C0FE6A',
-      grant_type: 'authorization_code'
-    }
-  })
-    .then((res) => res.json())
-    .then((pdata) => {
-      console.log(pdata);
-      return pdata;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
 
 export async function getAccessTokenV2(code) {
   return await apiClient

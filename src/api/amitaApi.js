@@ -161,6 +161,7 @@ export async function calendarList(start, end) {
 }
 
 export async function calendarUpdate(id, start, end, summary, description) {
+  console.log(id, start, end, summary, description);
   return await axios
     .post(server + '/updateEvent', {
       id: id,

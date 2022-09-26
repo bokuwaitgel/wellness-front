@@ -17,8 +17,8 @@ export const OrderList = (props) => {
                   if (d.eventID && d.startTime && d.endTime) {
                     calendarUpdate(
                       d.eventID,
-                      Date(d.startTime),
-                      Date(d.endTime),
+                      new Date(d.startTime),
+                      new Date(d.endTime),
                       result[0].firstname,
                       'phone: ' +
                         result[0].phone +

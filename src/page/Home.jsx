@@ -23,7 +23,7 @@ export const Home = () => {
   const [token, setToken] = React.useState(null);
   const [type, setType] = React.useState(0);
   const [orderList, setOrderList] = React.useState([]);
-  const [delay, setDelay] = React.useState('00:30:00');
+  const [delay, setDelay] = React.useState('01:00:00');
   const [start, setStart] = React.useState('08:00:00');
   const [end, setEnd] = React.useState('18:00:00');
   const [calendarData, setCalendarData] = React.useState([]);

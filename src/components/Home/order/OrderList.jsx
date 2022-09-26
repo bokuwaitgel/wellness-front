@@ -23,10 +23,10 @@ export const OrderList = (props) => {
                       d.eventID,
                       start,
                       end,
-                      result[0].firstname,
+                      result[0].firstname + ' ' + result[0].phone,
                       'phone: ' +
                         result[0].phone +
-                        (result[0].gmail ? '\n gmail: ' + result[0].gmail : '') +
+                        (result[0].gmail ? '\ngmail: ' + result[0].gmail : '') +
                         '\nPaid'
                     ).then((res) => console.log(res));
                   }

@@ -59,9 +59,9 @@ export const TimeList = (props) => {
   function findTime(Start, End) {
     for (let i = 0; i < calendarData.length; i++) {
       const data = calendarData[i];
-      console.log(data);
       const s = gTimeConcertor(data.start.dateTime),
         e = gTimeConcertor(data.end.dateTime);
+      console.log(s, e);
       if (s === Start && e === End) return false;
       if (s < Start && e > End) return false;
       if (s < Start && e > Start) return false;

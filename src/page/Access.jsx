@@ -109,12 +109,8 @@ export const Access = () => {
   return (
     <div>
       <Head title="Access" description="hello" />
-      {JSON.stringify(query)}
-      {JSON.stringify(checkoutId)}
-      {JSON.stringify(description)}
-      {JSON.stringify(paymentId)}
       {JSON.stringify(res)}
-      {res ? <div>amjilttai</div> : <div>amjiltgui</div>}
+      {res ? <div>amjiltai</div> : <div>amjiltgui</div>}
     </div>
   );
 };

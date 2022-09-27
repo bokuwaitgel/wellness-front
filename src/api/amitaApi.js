@@ -130,6 +130,19 @@ export async function updateEventID(id, end, start, checkoutId) {
     });
 }
 
+export async function getUserID(checkoutId) {
+  return await axios
+    .post(server + '/getUserID', {
+      checkoutId: checkoutId
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 export async function calendarAdd(start, end, summary, description) {
   return await axios
     .post(server + '/addGoogleCalender', {
@@ -151,23 +164,6 @@ export async function calendarList(start, end) {
     .post(server + '/getGoogleTime', {
       start: start,
       end: end
-    })
-    .then((res) => {
-      return res.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-export async function calendarUpdate(id, start, end, summary, description) {
-  return await axios
-    .post(server + '/updateEvent', {
-      id: id,
-      start: start,
-      end: end,
-      summary: summary,
-      description: description
     })
     .then((res) => {
       return res.data;

@@ -33,7 +33,6 @@ export const OrderCont = (props) => {
             time={timeList}
             start={start}
             end={end}
-            delay={delay}
             calendarData={calendarData}
             setCalendarData={setCalendarData}
           />

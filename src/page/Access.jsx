@@ -1,13 +1,74 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Head } from '../components/Head';
+import { getUserID } from '../api/amitaApi';
+
+// if (res) {
+//     findUser(userId).then((result) => {
+//       const start = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+//       const end = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+//       const hm = time?.split(':');
+//       const dl = delay?.split(':');
+//       start.setHours(parseInt(hm[0]));
+//       end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
+//       start.setMinutes(parseInt(hm[1]));
+//       end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
+//       calendarAdd(
+//         start,
+//         end,
+//         result[0].firstname + ' ' + result[0].phone,
+//         'phone: ' + result[0].phone + (result[0].gmail ? '\ngmail: ' + result[0].gmail : '')
+//       ).then((data) => {
+//         console.log(data);
+//         updateEventID(
+//           data?.data.data.id,
+//           data?.data.data.end.dateTime,
+//           data?.data.data.start.dateTime,
+//           checkoutId
+//         );
+//       });
+//     });
+
+// getCheckoutInfo(d.checkoutId).then((re) => {
+//     if (re.status === 'paid') {
+//       updateOrder(re.paymentId, re.status, d.checkoutId);
+//       const start = new Date(d.startTime);
+//       const end = new Date(d.endTime);
+//       start.setHours(parseInt(start.getHours()) - 8);
+//       end.setHours(parseInt(end.getHours()) - 8);
+//       if (d.eventID && d.startTime && d.endTime) {
+//         calendarUpdate(
+//           d.eventID,
+//           start,
+//           end,
+//           result[0].firstname + ' ' + result[0].phone,
+//           'phone: ' +
+//             result[0].phone +
+//             (result[0].gmail ? '\ngmail: ' + result[0].gmail : '') +
+//             '\nPaid'
+//         ).then((res) => console.log(res));
+//       }
+//     }
+//   });
 
 export const Access = () => {
-  var query = window.location.search.substring(1);
+  var query = window.location.search.substring(1).split('&');
+  const checkoutId = query[1]?.split('=') || '';
+  const description = query[2]?.split('=') || '';
+  const paymentId = query[3]?.split('=') || '';
+  const [res, setres] = React.useState('');
+  useEffect(() => {
+    getUserID(checkoutId[1]).then((res) => setres(res));
+    console.log('tet');
+  }, []);
   return (
     <>
       <Head title="Access" description="hello" />
       {JSON.stringify(query)}
+      {JSON.stringify(checkoutId)}
+      {JSON.stringify(description)}
+      {JSON.stringify(paymentId)}
+      {JSON.stringify(res)}
     </>
   );
 };

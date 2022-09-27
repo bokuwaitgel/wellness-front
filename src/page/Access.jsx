@@ -63,14 +63,11 @@ export const Access = () => {
   const checkoutId = query[1]?.split('=') || '';
   const description = query[2]?.split('=') || '';
   const paymentId = query[3]?.split('=') || '';
-  const [res, setres] = React.useState('null');
+  const [res, setRes] = React.useState(false);
   useEffect(() => {
     getUserID(checkoutId[1]).then((res) => {
       if (res && description[1] === 'SUCCESS') {
-        console.log(res);
         updateOrder(paymentId[1], 'paid', checkoutId[1]);
-        console.log(res[0].date);
-        console.log(res[0].hour);
         const day = res[0].date.split('/');
         const start = new Date();
         start.setFullYear(parseInt(day[0]));
@@ -88,22 +85,22 @@ export const Access = () => {
           end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
           start.setMinutes(parseInt(hm[1]));
           end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
-          console.log(start, end);
+          start.setSeconds(0);
+          end.setSeconds(0);
           findUser(res[0].userID).then((result) => {
-            console.log(result);
             calendarAdd(
               start,
               end,
               result[0].firstname + ' ' + result[0].phone,
               'phone: ' + result[0].phone + (result[0].gmail ? '\ngmail: ' + result[0].gmail : '')
             ).then((data) => {
-              setres(data);
+              console.log(data);
               updateEventID(
                 data?.data.data.id,
                 data?.data.data.end.dateTime,
                 data?.data.data.start.dateTime,
                 checkoutId[1]
-              );
+              ).then(setRes(true));
             });
           });
         });

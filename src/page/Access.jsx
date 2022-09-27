@@ -26,7 +26,7 @@ export const Access = () => {
       if (res && description[1] === 'SUCCESS') {
         updateOrder(paymentId[1], 'paid', checkoutId[1]).catch(() => setRes(2));
         const day = res[0].date.split('/');
-        setDate(res[0].day);
+        setDate(day);
         setHour(res[0].hour);
         const start = new Date();
         start.setFullYear(parseInt(day[0]));

@@ -47,7 +47,10 @@ export const Home = () => {
         ed.setHours(parseInt(dl[0]));
         st.setMinutes(parseInt(hm[1]));
         ed.setMinutes(parseInt(dl[1]));
-        calendarList(st, ed).then((res) => setCalendarData(res));
+
+        calendarList(st, ed).then((res) => {
+          setCalendarData(res);
+        });
         for (let s = start; s < end; s += delay) {
           setTimeList((i) => [...i, s]);
         }

@@ -34,14 +34,9 @@ export const TimeList = (props) => {
     delay,
     calendarData,
     setCalendarData,
-    loader,
+    loader = true,
     setLoader
   } = props || {};
-  const currentDay = new Date();
-  const limit =
-    currentDay.getHours() * 3600 + currentDay.getMinutes() * 60 + currentDay.getSeconds();
-  const today = currentDay.getDate() === day.getDate();
-  const [filteredTime, setFilteredTime] = React.useState();
 
   useEffect(() => {
     const st = new Date(day.getFullYear(), day.getMonth(), day.getDate());
@@ -53,18 +48,17 @@ export const TimeList = (props) => {
     st.setMinutes(parseInt(hm[1]));
     ed.setMinutes(parseInt(dl[1]));
     calendarList(st, ed).then((res) => setCalendarData(res));
-  }, []);
-  useEffect(() => {
-    const st = new Date(day.getFullYear(), day.getMonth(), day.getDate());
-    const ed = new Date(day.getFullYear(), day.getMonth(), day.getDate());
-    const hm = start.split(':');
-    const dl = end.split(':');
-    st.setHours(parseInt(hm[0]));
-    ed.setHours(parseInt(dl[0]));
-    st.setMinutes(parseInt(hm[1]));
-    ed.setMinutes(parseInt(dl[1]));
-    calendarList(st, ed).then((res) => setCalendarData(res));
   }, [day]);
+  console.log(setLoader);
+  const currentDay = new Date();
+  const limit =
+    currentDay.getHours() * 3600 + currentDay.getMinutes() * 60 + currentDay.getSeconds();
+  const today = currentDay.getDate() === day.getDate();
+  const [filteredTime, setFilteredTime] = React.useState(
+    time.filter(
+      (data) => findTime(data, data + timeConvertor(delay)) && (today ? limit < data : true)
+    )
+  );
 
   useEffect(() => {
     setFilteredTime(

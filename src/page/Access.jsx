@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Head } from '../components/Head';
 import {
@@ -18,9 +19,11 @@ export const Access = () => {
   const checkoutId = query[1]?.split('=') || '';
   const description = query[2]?.split('=') || '';
   const paymentId = query[3]?.split('=') || '';
+  const navigate = useNavigate();
   const [res, setRes] = React.useState(0);
   const [date, setDate] = React.useState(0);
   const [hour, setHour] = React.useState(0);
+  const [userID, setUserId] = React.useState('');
   useEffect(() => {
     getUserID(checkoutId[1]).then((res) => {
       if (res && description[1] === 'SUCCESS') {
@@ -28,6 +31,7 @@ export const Access = () => {
         const day = res[0].date.split('/');
         setDate(day);
         setHour(res[0].hour);
+        setUserId(res[0].userID);
         const start = new Date();
         start.setFullYear(parseInt(day[0]));
         start.setMonth(parseInt(day[1]) - 1);
@@ -102,6 +106,9 @@ export const Access = () => {
         ) : (
           <div className="center">Амжилтгүй боллоо</div>
         )}
+        <button onClick={() => navigate(`/?${userID}`)} className="bordered-button px-6 py-2">
+          <p className={'font-label-l'}>Буцах</p>
+        </button>
       </div>
     </div>
   );

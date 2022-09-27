@@ -11,7 +11,6 @@ export const OrderCont = (props) => {
     time,
     setTime,
     setOrderList,
-    setType,
     userID,
     start,
     end,
@@ -46,7 +45,6 @@ export const OrderCont = (props) => {
             time={time}
             text={'Захиалах'}
             type={'order'}
-            setType={setType}
             userId={userID}
           />
         </div>

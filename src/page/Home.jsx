@@ -87,7 +87,6 @@ export const Home = () => {
               setTime={setTime}
               timeList={timeList}
               setOrderList={setOrderList}
-              setType={setType}
               userID={userID}
               calendarData={calendarData}
               setCalendarData={setCalendarData}

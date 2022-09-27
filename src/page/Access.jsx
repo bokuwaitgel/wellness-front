@@ -66,6 +66,7 @@ export const Access = () => {
   const [res, setres] = React.useState('null');
   useEffect(() => {
     getUserID(checkoutId[1]).then((res) => {
+      setres(res);
       if (res && description[1] === 'SUCCESS') {
         updateOrder(paymentId[1], 'paid', checkoutId[1]);
         const day = res.date.split('/');

@@ -68,7 +68,9 @@ export const Access = () => {
     getUserID(checkoutId[1]).then((res) => {
       if (res && description[1] === 'SUCCESS') {
         updateOrder(paymentId[1], 'paid', checkoutId[1]);
-        const day = res.date.split('/');
+        const date = res.date;
+        const day = date.split('/');
+        setres(date);
         const start = new Date();
         start.setFullYear(parseInt(day[0]));
         start.setMonth(parseInt(day[1]) - 1);

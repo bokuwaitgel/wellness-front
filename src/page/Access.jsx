@@ -9,6 +9,7 @@ import {
   calendarAdd,
   updateEventID
 } from '../api/amitaApi';
+import { set } from 'date-fns';
 
 // if (res) {
 //     findUser(userId).then((result) => {
@@ -66,12 +67,17 @@ export const Access = () => {
   const [res, setres] = React.useState('null');
   useEffect(() => {
     getUserID(checkoutId[1]).then((res) => {
-      setres(res);
       if (res && description[1] === 'SUCCESS') {
         updateOrder(paymentId[1], 'paid', checkoutId[1]);
         const day = res.date.split('/');
-        const start = new Date(day[0].getFullYear(), day[1].getMonth(), day[2].getDate());
-        const end = new Date(day[0].getFullYear(), day[1].getMonth(), day[2].getDate());
+        const start = new Date();
+        start.setFullYear(parseInt(day[0]));
+        start.setMonth(parseInt(day[1]) - 1);
+        start.setDate(parseInt(day[2]));
+        const end = new Date();
+        end.setFullYear(parseInt(day[0]));
+        end.setMonth(parseInt(day[1]) - 1);
+        end.setDate(parseInt(day[2]));
         const hm = res.hour?.split(':');
         FetchTimeRule().then((time) => {
           const delay = time[0]?.delay;
@@ -80,6 +86,7 @@ export const Access = () => {
           end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
           start.setMinutes(parseInt(hm[1]));
           end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
+          setres([start, end]);
           findUser(res.userID).then((result) => {
             calendarAdd(
               start,

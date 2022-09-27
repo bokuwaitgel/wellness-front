@@ -4,10 +4,11 @@ import { stateDefinitions } from '../../constants/calendar';
 import 'react-calendar/dist/Calendar.css';
 
 export const DayCont = (props) => {
-  const { day, onChange, check = true } = props;
+  const { day, onChange, check = true, setLoader } = props;
   const currentDay = new Date();
   const [selected, setSelected] = React.useState(false);
   const handleEvent = (value) => {
+    setLoader(true);
     onChange(value);
     setSelected(false);
   };

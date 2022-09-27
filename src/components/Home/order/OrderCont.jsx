@@ -16,13 +16,15 @@ export const OrderCont = (props) => {
     end,
     delay,
     calendarData,
-    setCalendarData
+    setCalendarData,
+    loader,
+    setLoader
   } = props || {};
   return (
     <div>
       <form>
         <div>
-          <DayCont day={day} onChange={setDay} />
+          <DayCont day={day} onChange={setDay} setLoader={setLoader} />
         </div>
         <div>
           <TimeList
@@ -35,6 +37,8 @@ export const OrderCont = (props) => {
             end={end}
             calendarData={calendarData}
             setCalendarData={setCalendarData}
+            loader={loader}
+            setLoader={setLoader}
           />
         </div>
         <div className="center">

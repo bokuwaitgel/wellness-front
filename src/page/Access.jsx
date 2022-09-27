@@ -106,9 +106,11 @@ export const Access = () => {
         ) : (
           <div className="center">Амжилтгүй боллоо</div>
         )}
-        <button onClick={() => navigate(`/?${userID}`)} className="bordered-button px-6 py-2">
-          <p className={'font-label-l'}>Буцах</p>
-        </button>
+        <div className="mt-5">
+          <button onClick={() => navigate(`/?${userID}`)} className="bordered-button px-6 py-2">
+            <p className={'font-label-l'}>Буцах</p>
+          </button>
+        </div>
       </div>
     </div>
   );

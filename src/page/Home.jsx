@@ -8,6 +8,7 @@ import { FetchTimeRule, findUser, insertUser, calendarList } from '../api/amitaA
 import { getAccessTokenV2, getUserInfo } from '../api/miniAppApi';
 import { OrderList } from '../components/Home/order/OrderList';
 import { OrderCont } from '../components/Home/order/OrderCont';
+
 function timeConvertor(time) {
   if (!time) return 0;
   const [hours, minutes, seconds] = time.split(':');
@@ -27,6 +28,7 @@ export const Home = () => {
   const [start, setStart] = React.useState('08:00:00');
   const [end, setEnd] = React.useState('18:00:00');
   const [calendarData, setCalendarData] = React.useState([]);
+  const [loader, setLoader] = React.useState(true);
   useEffect(() => {
     getAccessTokenV2(userID).then((tk) => setToken(tk));
     if (timeList.length === 0) {
@@ -78,6 +80,8 @@ export const Home = () => {
         {type === 0 ? (
           <div>
             <OrderCont
+              loader={loader}
+              setLoader={setLoader}
               day={day}
               start={start}
               end={end}

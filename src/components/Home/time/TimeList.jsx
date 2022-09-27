@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { calendarList } from '../../../api/amitaApi';
+import { RotatingLines } from 'react-loader-spinner';
 function RevereseTimeConvertor(time) {
   return (
     (parseInt(time / 3600).toString() < 10 ? '0' : '') +
@@ -23,20 +24,25 @@ function gTimeConcertor(time) {
 }
 
 export const TimeList = (props) => {
-  const { day, time, selected, setSelected, start, end, delay, calendarData, setCalendarData } =
-    props || {};
+  const {
+    day,
+    time,
+    selected,
+    setSelected,
+    start,
+    end,
+    delay,
+    calendarData,
+    setCalendarData,
+    loader,
+    setLoader
+  } = props || {};
   const currentDay = new Date();
   const limit =
     currentDay.getHours() * 3600 + currentDay.getMinutes() * 60 + currentDay.getSeconds();
   const today = currentDay.getDate() === day.getDate();
-  const [filteredTime, setFilteredTime] = React.useState(
-    time.filter(
-      (data) => findTime(data, data + timeConvertor(delay)) && (today ? limit < data : true)
-    )
-    //2022/81/27
-  );
-
-  useEffect(() => {
+  const [filteredTime, setFilteredTime] = React.useState();
+  const getCalendarData = () => {
     const st = new Date(day.getFullYear(), day.getMonth(), day.getDate());
     const ed = new Date(day.getFullYear(), day.getMonth(), day.getDate());
     const hm = start.split(':');
@@ -46,6 +52,12 @@ export const TimeList = (props) => {
     st.setMinutes(parseInt(hm[1]));
     ed.setMinutes(parseInt(dl[1]));
     calendarList(st, ed).then((res) => setCalendarData(res));
+  };
+  useEffect(() => {
+    getCalendarData();
+  }, []);
+  useEffect(() => {
+    getCalendarData();
   }, [day]);
 
   useEffect(() => {
@@ -54,6 +66,7 @@ export const TimeList = (props) => {
         (data) => findTime(data, data + timeConvertor(delay)) && (today ? limit < data : true)
       )
     );
+    setLoader(false);
   }, [calendarData]);
 
   function findTime(Start, End) {
@@ -73,7 +86,17 @@ export const TimeList = (props) => {
     <div className="px-8">
       <div className="text-left  ml-5">Боломжит цагууд</div>
       <div className="pt-4 grid grid-cols-3 grid-flow-row gap-4 place-items-center">
-        {filteredTime.length > 0 && !(day.getDay() == 0 || day.getDay() == 6) ? (
+        {loader ? (
+          <div className="col-span-full center">
+            <RotatingLines
+              strokeColor="green"
+              strokeWidth="5"
+              animationDuration="0.50"
+              width="100"
+              visible={true}
+            />
+          </div>
+        ) : filteredTime.length > 0 && !(day.getDay() == 0 || day.getDay() == 6) ? (
           filteredTime.map((t, idx) => {
             const converted = RevereseTimeConvertor(t);
             const check = selected === converted;

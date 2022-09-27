@@ -77,7 +77,7 @@ export const Access = () => {
         end.setFullYear(parseInt(day[0]));
         end.setMonth(parseInt(day[1]) - 1);
         end.setDate(parseInt(day[2]));
-        setres([start, end]);
+        setres(start);
         const hm = res.hour?.split(':');
         FetchTimeRule().then((time) => {
           const delay = time[0]?.delay;

@@ -49,7 +49,7 @@ export const TimeList = (props) => {
     ed.setMinutes(parseInt(dl[1]));
     calendarList(st, ed).then((res) => setCalendarData(res));
   }, [day]);
-  console.log(setLoader);
+  console.log(loader);
   const currentDay = new Date();
   const limit =
     currentDay.getHours() * 3600 + currentDay.getMinutes() * 60 + currentDay.getSeconds();
@@ -60,6 +60,14 @@ export const TimeList = (props) => {
     )
   );
 
+  useEffect(() => {
+    setFilteredTime(
+      time.filter(
+        (data) => findTime(data, data + timeConvertor(delay)) && (today ? limit < data : true)
+      )
+    );
+    setLoader(false);
+  }, []);
   useEffect(() => {
     setFilteredTime(
       time.filter(

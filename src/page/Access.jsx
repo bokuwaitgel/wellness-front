@@ -77,6 +77,7 @@ export const Access = () => {
         end.setFullYear(parseInt(day[0]));
         end.setMonth(parseInt(day[1]) - 1);
         end.setDate(parseInt(day[2]));
+        setres([start, end]);
         const hm = res.hour?.split(':');
         FetchTimeRule().then((time) => {
           const delay = time[0]?.delay;
@@ -85,7 +86,6 @@ export const Access = () => {
           end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
           start.setMinutes(parseInt(hm[1]));
           end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
-          setres([start, end]);
           findUser(res.userID).then((result) => {
             calendarAdd(
               start,

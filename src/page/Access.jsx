@@ -69,8 +69,8 @@ export const Access = () => {
       if (res && description[1] === 'SUCCESS') {
         console.log(res);
         updateOrder(paymentId[1], 'paid', checkoutId[1]);
-        const date = res.date;
-        setres(date);
+        console.log(res.date);
+        console.log(res.hour);
         const day = '2022/9/27'.split('/');
         const start = new Date();
         start.setFullYear(parseInt(day[0]));
@@ -80,12 +80,9 @@ export const Access = () => {
         end.setFullYear(parseInt(day[0]));
         end.setMonth(parseInt(day[1]) - 1);
         end.setDate(parseInt(day[2]));
-        console.log(start, end);
-        const hm = res.hour?.split(':');
-        console.log(hm);
+        const hm = res.hour.split(':');
         FetchTimeRule().then((time) => {
           const delay = time[0]?.delay;
-          console.log(delay);
           const dl = delay?.split(':');
           start.setHours(parseInt(hm[0]));
           end.setHours(parseInt(hm[0]) + parseInt(dl[0]));

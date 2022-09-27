@@ -67,6 +67,7 @@ export const Access = () => {
   useEffect(() => {
     getUserID(checkoutId[1]).then((res) => {
       if (res && description[1] === 'SUCCESS') {
+        console.log(res);
         updateOrder(paymentId[1], 'paid', checkoutId[1]);
         const date = res.date;
         setres(date);
@@ -79,16 +80,20 @@ export const Access = () => {
         end.setFullYear(parseInt(day[0]));
         end.setMonth(parseInt(day[1]) - 1);
         end.setDate(parseInt(day[2]));
-        setres(start);
+        console.log(start, end);
         const hm = res.hour?.split(':');
+        console.log(hm);
         FetchTimeRule().then((time) => {
           const delay = time[0]?.delay;
+          console.log(delay);
           const dl = delay?.split(':');
           start.setHours(parseInt(hm[0]));
           end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
           start.setMinutes(parseInt(hm[1]));
           end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
+          console.log(start, end);
           findUser(res.userID).then((result) => {
+            console.log(result);
             calendarAdd(
               start,
               end,

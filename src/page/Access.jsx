@@ -121,24 +121,24 @@ export const Access = () => {
   return (
     <div>
       <Head title="Access" description="hello" />
-      <div className="flex-col text-center">
+      <div className="flex-col text-center text-xl">
         <div className="inline self-center">
           <CompanyHeader />
         </div>
         {res == 0 ? (
           <div className="center">
             <RotatingLines
-              strokeColor="grey"
+              strokeColor="green"
               strokeWidth="5"
-              animationDuration="0.75"
-              width="96"
+              animationDuration="0.50"
+              width="200"
               visible={true}
             />
           </div>
         ) : res == 1 ? (
           <div className="center">Таны захиалга баталгаажлаа</div>
         ) : (
-          <div className="center">amjiltgui</div>
+          <div className="center">Амжилтгүй боллоо</div>
         )}
       </div>
     </div>

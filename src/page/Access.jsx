@@ -80,7 +80,7 @@ export const Access = () => {
           end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
           start.setMinutes(parseInt(hm[1]));
           end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
-          findUser(res.userId).then((result) => {
+          findUser(res.userID).then((result) => {
             calendarAdd(
               start,
               end,

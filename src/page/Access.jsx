@@ -69,9 +69,9 @@ export const Access = () => {
       if (res && description[1] === 'SUCCESS') {
         console.log(res);
         updateOrder(paymentId[1], 'paid', checkoutId[1]);
-        console.log(res.date);
-        console.log(res.hour);
-        const day = '2022/9/27'.split('/');
+        console.log(res[0].date);
+        console.log(res[0].hour);
+        const day = res[0].date.split('/');
         const start = new Date();
         start.setFullYear(parseInt(day[0]));
         start.setMonth(parseInt(day[1]) - 1);
@@ -80,7 +80,7 @@ export const Access = () => {
         end.setFullYear(parseInt(day[0]));
         end.setMonth(parseInt(day[1]) - 1);
         end.setDate(parseInt(day[2]));
-        const hm = res.hour.split(':');
+        const hm = res[0].hour.split(':');
         FetchTimeRule().then((time) => {
           const delay = time[0]?.delay;
           const dl = delay?.split(':');
@@ -89,7 +89,7 @@ export const Access = () => {
           start.setMinutes(parseInt(hm[1]));
           end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
           console.log(start, end);
-          findUser(res.userID).then((result) => {
+          findUser(res[0].userID).then((result) => {
             console.log(result);
             calendarAdd(
               start,

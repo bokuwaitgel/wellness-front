@@ -63,10 +63,9 @@ export const Access = () => {
   const checkoutId = query[1]?.split('=') || '';
   const description = query[2]?.split('=') || '';
   const paymentId = query[3]?.split('=') || '';
-  const [res, setres] = React.useState('');
+  const [res, setres] = React.useState('null');
   useEffect(() => {
     getUserID(checkoutId[1]).then((res) => {
-      setres(res);
       if (res && description[1] === 'SUCCESS') {
         updateOrder(paymentId[1], 'paid', checkoutId[1]);
         const day = res.date.split('/');
@@ -87,7 +86,7 @@ export const Access = () => {
               result[0].firstname + ' ' + result[0].phone,
               'phone: ' + result[0].phone + (result[0].gmail ? '\ngmail: ' + result[0].gmail : '')
             ).then((data) => {
-              console.log(data);
+              setres(data);
               updateEventID(
                 data?.data.data.id,
                 data?.data.data.end.dateTime,

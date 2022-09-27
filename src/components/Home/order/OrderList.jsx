@@ -21,7 +21,7 @@ export const OrderList = (props) => {
             key={idx}
             className={`flex space-x day-cont ${!data.paid ? 'bg-orange' : 'bg-green'}`}>
             <div className="pl-4 w-1/3">
-              {resDate[resDate.length - 1] + '/' + resDate[resDate.length - 2]}
+              {resDate[resDate.length - 2] + '/' + resDate[resDate.length - 1]}
             </div>
             <div className="pl-4 w-1/3">{data.hour}</div>
             <div className="w-1/3 center">Баталгаажсан</div>

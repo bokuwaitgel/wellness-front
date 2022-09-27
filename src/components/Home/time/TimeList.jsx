@@ -24,8 +24,17 @@ function gTimeConcertor(time) {
 }
 
 export const TimeList = (props) => {
-  const { day, time, selected, setSelected, delay, loader = true, setLoader } = props || {};
-  const [calendarData, setCalendarData] = React.useState([]);
+  const {
+    day,
+    time,
+    selected,
+    setSelected,
+    delay,
+    loader = true,
+    setLoader,
+    calendarData,
+    setCalendarData
+  } = props || {};
   useEffect(() => {
     const st = new Date(day.getFullYear(), day.getMonth(), day.getDate());
     const ed = new Date(day.getFullYear(), day.getMonth(), day.getDate());
@@ -52,11 +61,7 @@ export const TimeList = (props) => {
   const limit =
     currentDay.getHours() * 3600 + currentDay.getMinutes() * 60 + currentDay.getSeconds();
   const today = currentDay.getDate() === day.getDate();
-  const [filteredTime, setFilteredTime] = React.useState(
-    time.filter(
-      (data) => findTime(data, data + timeConvertor(delay)) && (today ? limit < data : true)
-    )
-  );
+  const [filteredTime, setFilteredTime] = React.useState([]);
 
   useEffect(() => {
     setFilteredTime(

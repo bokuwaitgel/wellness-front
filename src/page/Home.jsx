@@ -4,7 +4,7 @@ import { Head } from '../components/Head';
 import { CompanyInfo } from '../components/Home/company/CompanyInfo';
 import { CompanyHeader } from '../components/Home/company/CompanyHeader';
 import { ChangeButton } from '../components/Home/buttons/changeButton';
-import { FetchTimeRule, findUser, insertUser } from '../api/amitaApi';
+import { FetchTimeRule, findUser, insertUser, calendarList } from '../api/amitaApi';
 import { getAccessTokenV2, getUserInfo } from '../api/miniAppApi';
 import { OrderList } from '../components/Home/order/OrderList';
 import { OrderCont } from '../components/Home/order/OrderCont';
@@ -25,6 +25,9 @@ export const Home = () => {
   const [type, setType] = React.useState(0);
   const [orderList, setOrderList] = React.useState([]);
   const [delay, setDelay] = React.useState('01:00:00');
+  const [start, setStart] = React.useState('08:00:00');
+  const [end, setEnd] = React.useState('18:00:00');
+  const [calendarData, setCalendarData] = React.useState([]);
   const [loader, setLoader] = React.useState(true);
   useEffect(() => {
     getAccessTokenV2(userID).then((tk) => setToken(tk));
@@ -34,6 +37,18 @@ export const Home = () => {
         const end = timeConvertor(res[0]?.end);
         const delay = timeConvertor(res[0]?.delay);
         setDelay(res[0]?.delay);
+        setStart(res[0]?.start);
+        setEnd(res[0]?.end);
+        const st = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+        const ed = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+        st.setHours(0);
+        ed.setHours(24);
+        st.setMinutes(0);
+        ed.setMinutes(0);
+
+        calendarList(st, ed).then((res) => {
+          setCalendarData(res);
+        });
         for (let s = start; s < end; s += delay) {
           setTimeList((i) => [...i, s]);
         }
@@ -61,7 +76,7 @@ export const Home = () => {
           <CompanyHeader />
         </div>
         <div>
-          <ChangeButton type={type} setType={setType} />
+          <ChangeButton type={type} setType={setType} setLoader={setLoader} />
         </div>
         {type === 0 ? (
           <div>
@@ -69,6 +84,8 @@ export const Home = () => {
               loader={loader}
               setLoader={setLoader}
               day={day}
+              start={start}
+              end={end}
               delay={delay}
               setDay={setDay}
               time={time}
@@ -76,6 +93,8 @@ export const Home = () => {
               timeList={timeList}
               setOrderList={setOrderList}
               userID={userID}
+              calendarData={calendarData}
+              setCalendarData={setCalendarData}
             />
           </div>
         ) : (

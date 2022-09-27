@@ -4,8 +4,20 @@ import { TimeList } from '../time/TimeList';
 import { Order } from '../buttons/Order';
 
 export const OrderCont = (props) => {
-  const { day, setDay, timeList, time, setTime, setOrderList, userID, delay, loader, setLoader } =
-    props || {};
+  const {
+    day,
+    setDay,
+    timeList,
+    time,
+    setTime,
+    setOrderList,
+    userID,
+    delay,
+    loader,
+    setLoader,
+    calendarData,
+    setCalendarData
+  } = props || {};
   return (
     <div>
       <form>
@@ -21,6 +33,8 @@ export const OrderCont = (props) => {
             delay={delay}
             loader={loader}
             setLoader={setLoader}
+            calendarData={calendarData}
+            setCalendarData={setCalendarData}
           />
         </div>
         <div className="center">

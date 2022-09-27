@@ -94,7 +94,6 @@ export const Access = () => {
               result[0].firstname + ' ' + result[0].phone,
               'phone: ' + result[0].phone + (result[0].gmail ? '\ngmail: ' + result[0].gmail : '')
             ).then((data) => {
-              console.log(data);
               updateEventID(
                 data?.data.data.id,
                 data?.data.data.end.dateTime,
@@ -106,16 +105,16 @@ export const Access = () => {
         });
       }
     });
-    console.log('tet');
   }, []);
   return (
-    <>
+    <div>
       <Head title="Access" description="hello" />
       {JSON.stringify(query)}
       {JSON.stringify(checkoutId)}
       {JSON.stringify(description)}
       {JSON.stringify(paymentId)}
       {JSON.stringify(res)}
-    </>
+      {res ? <div>amjilttai</div> : <div>amjiltgui</div>}
+    </div>
   );
 };

@@ -9,8 +9,9 @@ import {
   calendarAdd,
   updateEventID
 } from '../api/amitaApi';
+import { CompanyHeader } from '../components/Home/company/CompanyHeader';
 
-import { Audio } from 'react-loader-spinner';
+import { RotatingLines } from 'react-loader-spinner';
 // if (res) {
 //     findUser(userId).then((result) => {
 //       const start = new Date(day.getFullYear(), day.getMonth(), day.getDate());
@@ -120,33 +121,26 @@ export const Access = () => {
   return (
     <div>
       <Head title="Access" description="hello" />
-      {JSON.stringify(res)}
-      <Audio
-        height="80"
-        width="80"
-        radius="9"
-        color="grey"
-        ariaLabel="loading"
-        wrapperStyle
-        wrapperClass
-      />
-      {res == 0 ? (
-        <div className="center">
-          <Audio
-            height="80"
-            width="80"
-            radius="9"
-            color="grey"
-            ariaLabel="loading"
-            wrapperStyle
-            wrapperClass
-          />
+      <div className="flex-col text-center">
+        <div className="inline self-center">
+          <CompanyHeader />
         </div>
-      ) : res == 1 ? (
-        <div className="center">amjiltai</div>
-      ) : (
-        <div className="center">amjiltgui</div>
-      )}
+        {res == 0 ? (
+          <div className="center">
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="96"
+              visible={true}
+            />
+          </div>
+        ) : res == 1 ? (
+          <div className="center">Таны захиалга баталгаажлаа</div>
+        ) : (
+          <div className="center">amjiltgui</div>
+        )}
+      </div>
     </div>
   );
 };

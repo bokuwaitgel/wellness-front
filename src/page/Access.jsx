@@ -9,7 +9,6 @@ import {
   calendarAdd,
   updateEventID
 } from '../api/amitaApi';
-import { set } from 'date-fns';
 
 // if (res) {
 //     findUser(userId).then((result) => {

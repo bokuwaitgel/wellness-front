@@ -26,7 +26,7 @@ export const Access = () => {
   const [userID, setUserId] = React.useState('');
   useEffect(() => {
     getUserID(checkoutId[1]).then((res) => {
-      if (res && description[1] === 'SUCCESS') {
+      if (res && description[1] === 'SUCCESS' && res[0].paid === null) {
         updateOrder(paymentId[1], 'paid', checkoutId[1]).catch(() => setRes(2));
         const day = res[0].date.split('/');
         setDate(day);
@@ -76,6 +76,8 @@ export const Access = () => {
               .catch(() => setRes(2));
           })
           .catch(() => setRes(2));
+      } else {
+        if (res[0].paid != null) setRes(3);
       }
     });
   }, []);
@@ -103,6 +105,8 @@ export const Access = () => {
               {date[0]} оны {date[1]} сарын {date[2]} өдрийн {hour}
             </div>
           </>
+        ) : res == 3 ? (
+          <div className="center">Баталгаажсан гүйлгээ байна</div>
         ) : (
           <div className="center">Амжилтгүй боллоо</div>
         )}

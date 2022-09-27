@@ -10,6 +10,7 @@ import {
   updateEventID
 } from '../api/amitaApi';
 
+import { Audio } from 'react-loader-spinner';
 // if (res) {
 //     findUser(userId).then((result) => {
 //       const start = new Date(day.getFullYear(), day.getMonth(), day.getDate());
@@ -63,11 +64,11 @@ export const Access = () => {
   const checkoutId = query[1]?.split('=') || '';
   const description = query[2]?.split('=') || '';
   const paymentId = query[3]?.split('=') || '';
-  const [res, setRes] = React.useState(false);
+  const [res, setRes] = React.useState(0);
   useEffect(() => {
     getUserID(checkoutId[1]).then((res) => {
       if (res && description[1] === 'SUCCESS') {
-        updateOrder(paymentId[1], 'paid', checkoutId[1]);
+        updateOrder(paymentId[1], 'paid', checkoutId[1]).catch(() => setRes(2));
         const day = res[0].date.split('/');
         const start = new Date();
         start.setFullYear(parseInt(day[0]));
@@ -78,31 +79,41 @@ export const Access = () => {
         end.setMonth(parseInt(day[1]) - 1);
         end.setDate(parseInt(day[2]));
         const hm = res[0].hour.split(':');
-        FetchTimeRule().then((time) => {
-          const delay = time[0]?.delay;
-          const dl = delay?.split(':');
-          start.setHours(parseInt(hm[0]));
-          end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
-          start.setMinutes(parseInt(hm[1]));
-          end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
-          start.setSeconds(0);
-          end.setSeconds(0);
-          findUser(res[0].userID).then((result) => {
-            calendarAdd(
-              start,
-              end,
-              result[0].firstname + ' ' + result[0].phone,
-              'phone: ' + result[0].phone + (result[0].gmail ? '\ngmail: ' + result[0].gmail : '')
-            ).then((data) => {
-              updateEventID(
-                data?.data.data.id,
-                data?.data.data.end.dateTime,
-                data?.data.data.start.dateTime,
-                checkoutId[1]
-              ).then(setRes(true));
-            });
-          });
-        });
+        FetchTimeRule()
+          .then((time) => {
+            const delay = time[0]?.delay;
+            const dl = delay?.split(':');
+            start.setHours(parseInt(hm[0]));
+            end.setHours(parseInt(hm[0]) + parseInt(dl[0]));
+            start.setMinutes(parseInt(hm[1]));
+            end.setMinutes(parseInt(dl[1]) + parseInt(hm[1]));
+            start.setSeconds(0);
+            end.setSeconds(0);
+            findUser(res[0].userID)
+              .then((result) => {
+                calendarAdd(
+                  start,
+                  end,
+                  result[0].firstname + ' ' + result[0].phone,
+                  'phone: ' +
+                    result[0].phone +
+                    (result[0].gmail ? '\ngmail: ' + result[0].gmail : '')
+                )
+                  .then((data) => {
+                    updateEventID(
+                      data?.data.data.id,
+                      data?.data.data.end.dateTime,
+                      data?.data.data.start.dateTime,
+                      checkoutId[1]
+                    )
+                      .then(setRes(1))
+                      .catch(() => setRes(2));
+                  })
+                  .catch(() => setRes(2));
+              })
+              .catch(() => setRes(2));
+          })
+          .catch(() => setRes(2));
       }
     });
   }, []);
@@ -110,7 +121,32 @@ export const Access = () => {
     <div>
       <Head title="Access" description="hello" />
       {JSON.stringify(res)}
-      {res ? <div>amjiltai</div> : <div>amjiltgui</div>}
+      <Audio
+        height="80"
+        width="80"
+        radius="9"
+        color="grey"
+        ariaLabel="loading"
+        wrapperStyle
+        wrapperClass
+      />
+      {res == 0 ? (
+        <div className="center">
+          <Audio
+            height="80"
+            width="80"
+            radius="9"
+            color="grey"
+            ariaLabel="loading"
+            wrapperStyle
+            wrapperClass
+          />
+        </div>
+      ) : res == 1 ? (
+        <div className="center">amjiltai</div>
+      ) : (
+        <div className="center">amjiltgui</div>
+      )}
     </div>
   );
 };

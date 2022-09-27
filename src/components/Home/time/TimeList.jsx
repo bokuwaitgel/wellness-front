@@ -45,7 +45,6 @@ export const TimeList = (props) => {
     st.setMinutes(parseInt(hm[1]));
     ed.setMinutes(parseInt(dl[1]));
     calendarList(st, ed).then((res) => setCalendarData(res));
-    console.log(calendarData);
   }, [day]);
 
   useEffect(() => {
@@ -73,7 +72,7 @@ export const TimeList = (props) => {
     <div className="px-8">
       <div className="text-left  ml-5">Боломжит цагууд</div>
       <div className="pt-4 grid grid-cols-3 grid-flow-row gap-4 place-items-center">
-        {filteredTime.length > 0 ? (
+        {filteredTime.length > 0 && !(day.getDay() == 0 || day.getDay() == 6) ? (
           filteredTime.map((t, idx) => {
             const converted = RevereseTimeConvertor(t);
             const check = selected === converted;

@@ -42,7 +42,8 @@ export const TimeList = (props) => {
     currentDay.getHours() * 3600 + currentDay.getMinutes() * 60 + currentDay.getSeconds();
   const today = currentDay.getDate() === day.getDate();
   const [filteredTime, setFilteredTime] = React.useState();
-  const getCalendarData = () => {
+
+  useEffect(() => {
     const st = new Date(day.getFullYear(), day.getMonth(), day.getDate());
     const ed = new Date(day.getFullYear(), day.getMonth(), day.getDate());
     const hm = start.split(':');
@@ -52,12 +53,17 @@ export const TimeList = (props) => {
     st.setMinutes(parseInt(hm[1]));
     ed.setMinutes(parseInt(dl[1]));
     calendarList(st, ed).then((res) => setCalendarData(res));
-  };
-  useEffect(() => {
-    getCalendarData();
   }, []);
   useEffect(() => {
-    getCalendarData();
+    const st = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+    const ed = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+    const hm = start.split(':');
+    const dl = end.split(':');
+    st.setHours(parseInt(hm[0]));
+    ed.setHours(parseInt(dl[0]));
+    st.setMinutes(parseInt(hm[1]));
+    ed.setMinutes(parseInt(dl[1]));
+    calendarList(st, ed).then((res) => setCalendarData(res));
   }, [day]);
 
   useEffect(() => {

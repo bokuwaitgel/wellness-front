@@ -3,7 +3,7 @@ import { checkout } from '../../../api/miniAppApi';
 import { insertOrder } from '../../../api/amitaApi';
 
 const saveOrder = (day, time, type, checkoutId, userId, setType) => {
-  const date = day.getMonth() + 1 + '/' + day.getDate();
+  const date = day.getFullYear() + '/' + day.getMonth() + 1 + '/' + day.getDate();
   insertOrder(date, time, type, checkoutId, userId).catch((err) => alert(err));
   setType(1);
 };

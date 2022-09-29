@@ -5,7 +5,7 @@ export const stsBase = 'https://test.hipay.mn';
 export async function getAccessTokenV2(code) {
   return await apiClient
     .post('/v2/auth/token', {
-      client_id: 'amitawlc',
+      client_id: 'amita001',
       client_secret: 'Trk4UNHt58LqDwRL4adsXV',
       redirect_uri: 'https://amita-backend.herokuapp.com/webhook',
       code: code,

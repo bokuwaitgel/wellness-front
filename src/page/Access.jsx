@@ -100,10 +100,10 @@ export const Access = () => {
           </div>
         ) : res == 1 ? (
           <>
-            <div className="center">Таны захиалга баталгаажлаа</div>
             <div className="center">
-              {date[0]} оны {date[1]} сарын {date[2]} өдрийн {hour}
+              {date[0]} оны {date[1]} сарын {date[2]} өдрийн {hour}-д авсан
             </div>
+            <div className="center">таны захиалга баталгаажлаа</div>
           </>
         ) : res == 3 ? (
           <div className="center">Баталгаажсан гүйлгээ байна</div>

@@ -1,6 +1,6 @@
 import { apiClient } from './apiClient';
 
-export const stsBase = 'https://sts.hipay.mn';
+export const stsBase = 'https://test.hipay.mn';
 
 export async function getAccessTokenV2(code) {
   return await apiClient

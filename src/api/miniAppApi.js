@@ -50,7 +50,7 @@ export async function checkout() {
       '/checkout/',
       {
         entityId: 'amita001',
-        amount: '5000',
+        amount: '1',
         currency: 'MNT',
         redirect_uri: 'https://amita-front.herokuapp.com/access'
       },
@@ -100,7 +100,6 @@ export async function getPayment(payment) {
       }
     })
     .then((res) => {
-      console.log(res.data);
       if (res?.data.code === 1) {
         return res;
       } else {

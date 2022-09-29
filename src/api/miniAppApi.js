@@ -7,7 +7,7 @@ export async function getAccessTokenV2(code) {
     .post('/v2/auth/token', {
       client_id: 'amita001',
       client_secret: 'Trk4UNHt58LqDwRL4adsXV',
-      redirect_uri: 'https://amita-backend.herokuapp.com/webhook',
+      redirect_uri: 'https://amita-test-backend.herokuapp.com/webhook',
       code: code,
       grant_type: 'authorization_code'
     })
@@ -52,7 +52,7 @@ export async function checkout() {
         entityId: 'amita001',
         amount: '5000',
         currency: 'MNT',
-        redirect_uri: 'https://amita-front.herokuapp.com/access'
+        redirect_uri: 'https://amita-test-front.herokuapp.com/access'
       },
       {
         headers: {

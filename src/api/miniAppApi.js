@@ -49,10 +49,10 @@ export async function checkout() {
   const bearer = 'Bearer ' + client_secret;
   return await apiClient
     .post(
-      '/checkout/',
+      '/checkout',
       {
         entityId: client_id,
-        amount: '0',
+        amount: '1',
         currency: 'MNT',
         redirect_uri: 'https://amita-front.herokuapp.com/access'
       },

@@ -14,6 +14,7 @@ export async function getAccessTokenV2(code) {
       grant_type: 'authorization_code'
     })
     .then((res) => {
+      console.log(res);
       if (res?.data.code === 1) {
         return res?.data.access_token;
       } else {

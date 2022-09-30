@@ -6,13 +6,17 @@ export const client_id = 'amitawlc';
 
 export async function getAccessTokenV2(code) {
   return await apiClient
-    .post('/v2/auth/token', {
-      client_id: client_id,
-      client_secret: client_secret,
-      redirect_uri: 'https://amita-backend.herokuapp.com/webhook',
-      code: code,
-      grant_type: 'authorization_code'
-    })
+    .post(
+      '/v2/auth/token',
+      { 'Content-Type': 'application/json' },
+      {
+        client_id: client_id,
+        client_secret: client_secret,
+        redirect_uri: 'https://amita-backend.herokuapp.com/webhook',
+        code: code,
+        grant_type: 'authorization_code'
+      }
+    )
     .then((res) => {
       console.log(res);
       if (res?.data.code === 1) {
@@ -53,7 +57,7 @@ export async function checkout() {
       '/checkout',
       {
         entityId: client_id,
-        amount: '1',
+        amount: '0',
         currency: 'MNT',
         redirect_uri: 'https://amita-front.herokuapp.com/access'
       },

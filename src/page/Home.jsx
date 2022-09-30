@@ -75,6 +75,7 @@ export const Home = () => {
         <div className="inline self-center">
           <CompanyHeader />
         </div>
+        {JSON.stringify(query)}
         <div>
           <ChangeButton type={type} setType={setType} setLoader={setLoader} />
         </div>

@@ -8,7 +8,7 @@ export async function getAccessTokenV2(code) {
   return await apiClient
     .post(
       '/v2/auth/token',
-      { 'Content-Type': 'application/json' },
+      { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
       {
         client_id: client_id,
         client_secret: client_secret,

@@ -2,10 +2,10 @@ import axios from 'axios';
 export const CLIENT_ID = 'Wallet';
 
 export const apiClient = axios.create({
-  baseURL: 'https://test.hipay.mn',
   headers: {
     client_id: CLIENT_ID
   },
+  baseURL: 'https://test.hipay.mn',
   timeout: 65000
 });
 

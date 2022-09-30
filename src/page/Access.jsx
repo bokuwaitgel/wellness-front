@@ -101,7 +101,7 @@ export const Access = () => {
         ) : res == 1 ? (
           <>
             <div className="center">
-              {date[0]} оны {date[1]} сарын {date[2]} өдрийн {hour}-д авсан
+              {date[0]} оны {date[1]} сарын {date[2]} өдрийн {hour}-д авсан-д авсан
             </div>
             <div className="center">таны захиалга баталгаажлаа</div>
           </>

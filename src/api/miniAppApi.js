@@ -1,12 +1,7 @@
-import axios from 'axios';
-export const CLIENT_ID = 'Wallet';
-export const apiClient = axios.create({
-  headers: {
-    client_id: CLIENT_ID
-  },
-  baseURL: 'https://test.hipay.mn',
-  timeout: 65000
-});
+import { apiClient } from './apiClient';
+
+export const stsBase = 'https://test.hipay.mn';
+
 export async function getAccessTokenV2(code) {
   return await apiClient
     .post('/v2/auth/token', {
@@ -17,6 +12,7 @@ export async function getAccessTokenV2(code) {
       grant_type: 'authorization_code'
     })
     .then((res) => {
+      console.log(res);
       if (res?.data.code === 1) {
         return res?.data.access_token;
       } else {
@@ -49,13 +45,13 @@ export async function getUserInfo(token) {
 }
 
 export async function checkout() {
-  const bearer = 'Bearer Trk4UNHt58LqDwRL4adsXV';
+  const bearer = 'Bearer ' + client_secret;
   return await apiClient
     .post(
-      '/checkout/',
+      '/checkout',
       {
-        entityId: 'amita001',
-        amount: '5000',
+        entityId: client_id,
+        amount: '0',
         currency: 'MNT',
         redirect_uri: 'https://amita-test-front.herokuapp.com/access'
       },
@@ -78,7 +74,7 @@ export async function checkout() {
 }
 
 export async function getCheckoutInfo(checkoutId) {
-  const bearer = 'Bearer Trk4UNHt58LqDwRL4adsXV';
+  const bearer = 'Bearer ' + client_secret;
   return await apiClient
     .get(`/checkout/get/${checkoutId}`, {
       headers: {
@@ -97,7 +93,7 @@ export async function getCheckoutInfo(checkoutId) {
     });
 }
 export async function getPayment(payment) {
-  const bearer = 'Bearer Trk4UNHt58LqDwRL4adsXV';
+  const bearer = 'Bearer ' + client_secret;
   return await apiClient
     .get(`/payment/get/${payment}?entityId=amita001`, {
       headers: {
@@ -105,7 +101,6 @@ export async function getPayment(payment) {
       }
     })
     .then((res) => {
-      console.log(res.data);
       if (res?.data.code === 1) {
         return res;
       } else {

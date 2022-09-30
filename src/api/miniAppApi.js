@@ -7,7 +7,7 @@ export async function getAccessTokenV2(code) {
     .post('/v2/auth/token', {
       client_id: 'amita001',
       client_secret: 'Trk4UNHt58LqDwRL4adsXV',
-      redirect_uri: 'https://amita-backend.herokuapp.com/webhook',
+      redirect_uri: 'https://amita-test-backend.herokuapp.com/webhook',
       code: code,
       grant_type: 'authorization_code'
     })

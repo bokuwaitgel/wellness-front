@@ -2,11 +2,12 @@ import { apiClient } from './apiClient';
 
 export const stsBase = 'https://sts.hipay.mn';
 const client_secret = '5hPR4fs9g2Wq5ZAXWI0L2L';
+const client_id = 'amitawlc';
 
 export async function getAccessTokenV2(code) {
   return await apiClient
     .post('/v2/auth/token', {
-      client_id: 'amitawlc',
+      client_id: client_id,
       client_secret: client_secret,
       redirect_uri: 'https://amita-backend.herokuapp.com/webhook',
       code: code,
@@ -50,7 +51,7 @@ export async function checkout() {
     .post(
       '/checkout/',
       {
-        entityId: 'amita001',
+        entityId: client_id,
         amount: '0',
         currency: 'MNT',
         redirect_uri: 'https://amita-front.herokuapp.com/access'

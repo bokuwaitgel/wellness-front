@@ -57,6 +57,7 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
+    console.log(token);
     if (token)
       getUserInfo(token).then((res) => {
         if (res.code === 1)
@@ -75,7 +76,6 @@ export const Home = () => {
         <div className="inline self-center">
           <CompanyHeader />
         </div>
-        {JSON.stringify(query)}
         <div>
           <ChangeButton type={type} setType={setType} setLoader={setLoader} />
         </div>

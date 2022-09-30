@@ -1,12 +1,13 @@
 import { apiClient } from './apiClient';
 
 export const stsBase = 'https://test.hipay.mn';
+const client_secret = 'Trk4UNHt58LqDwRL4adsXV';
 
 export async function getAccessTokenV2(code) {
   return await apiClient
     .post('/v2/auth/token', {
       client_id: 'amita001',
-      client_secret: 'Trk4UNHt58LqDwRL4adsXV',
+      client_secret: client_secret,
       redirect_uri: 'https://amita-backend.herokuapp.com/webhook',
       code: code,
       grant_type: 'authorization_code'
@@ -44,7 +45,7 @@ export async function getUserInfo(token) {
 }
 
 export async function checkout() {
-  const bearer = 'Bearer 5hPR4fs9g2Wq5ZAXWI0L2L';
+  const bearer = 'Bearer ' + client_secret;
   return await apiClient
     .post(
       '/checkout/',
@@ -73,7 +74,7 @@ export async function checkout() {
 }
 
 export async function getCheckoutInfo(checkoutId) {
-  const bearer = 'Bearer 5hPR4fs9g2Wq5ZAXWI0L2L';
+  const bearer = 'Bearer ' + client_secret;
   return await apiClient
     .get(`/checkout/get/${checkoutId}`, {
       headers: {
@@ -92,7 +93,7 @@ export async function getCheckoutInfo(checkoutId) {
     });
 }
 export async function getPayment(payment) {
-  const bearer = 'Bearer 5hPR4fs9g2Wq5ZAXWI0L2L';
+  const bearer = 'Bearer ' + client_secret;
   return await apiClient
     .get(`/payment/get/${payment}?entityId=amita001`, {
       headers: {

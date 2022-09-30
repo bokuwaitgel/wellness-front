@@ -1,8 +1,8 @@
 import { apiClient } from './apiClient';
 
 export const stsBase = 'https://sts.hipay.mn';
-const client_secret = '5hPR4fs9g2Wq5ZAXWI0L2L';
-const client_id = 'amitawlc';
+export const client_secret = '5hPR4fs9g2Wq5ZAXWI0L2L';
+export const client_id = 'amitawlc';
 
 export async function getAccessTokenV2(code) {
   return await apiClient

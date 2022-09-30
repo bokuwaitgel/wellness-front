@@ -1,7 +1,12 @@
-import { apiClient } from './apiClient';
-
-export const stsBase = 'https://test.hipay.mn';
-
+import axios from 'axios';
+export const CLIENT_ID = 'Wallet';
+export const apiClient = axios.create({
+  headers: {
+    client_id: CLIENT_ID
+  },
+  baseURL: 'https://test.hipay.mn',
+  timeout: 65000
+});
 export async function getAccessTokenV2(code) {
   return await apiClient
     .post('/v2/auth/token', {

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { client_id } from './miniAppApi';
 export const CLIENT_ID = 'Wallet';
 
 export const apiClient = axios.create({

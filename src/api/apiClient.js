@@ -1,10 +1,13 @@
 import axios from 'axios';
+import { client_id } from './miniAppApi';
 export const CLIENT_ID = 'Wallet';
 
 export const apiClient = axios.create({
   baseURL: 'https://sts.hipay.mn',
   headers: {
-    client_id: CLIENT_ID
+    client_id: client_id,
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json'
   },
   timeout: 65000
 });

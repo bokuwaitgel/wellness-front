@@ -5,7 +5,6 @@ export const CLIENT_ID = 'Wallet';
 export const apiClient = axios.create({
   baseURL: 'https://sts.hipay.mn',
   headers: {
-    client_id: client_id,
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json'
   },

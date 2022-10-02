@@ -53,7 +53,7 @@ export async function checkout() {
       '/checkout',
       {
         entityId: client_id,
-        amount: '0',
+        amount: '5000',
         currency: 'MNT',
         redirect_uri: 'https://amita-front.herokuapp.com/access'
       },

@@ -186,7 +186,7 @@ export async function getAccessTokenV2(code) {
       }
     })
     .catch((error) => {
-      console.log('test', error);
+      console.log(error);
     });
 }
 export async function getUserInfo(token) {
@@ -209,7 +209,6 @@ export async function checkout() {
   return await axios
     .get(server + '/checkout')
     .then((res) => {
-      console.log(res);
       if (res?.data.code === 1) {
         return res?.data;
       } else {

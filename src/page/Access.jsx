@@ -91,7 +91,7 @@ export const Access = () => {
         {res == 0 ? (
           <div className="center">
             <RotatingLines
-              strokeColor="green"
+              strokeColor="#07aeaa"
               strokeWidth="5"
               animationDuration="0.50"
               width="200"

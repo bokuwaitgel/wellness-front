@@ -181,8 +181,8 @@ export async function getAccessTokenV2(code) {
     })
     .then((res) => {
       console.log('test', res);
-      if (res?.code === 1) {
-        return res?.access_token;
+      if (res?.data.code === 1) {
+        return res?.data.access_token;
       } else {
         return '';
       }

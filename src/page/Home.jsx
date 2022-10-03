@@ -24,6 +24,7 @@ function timeConvertor(time) {
 export const Home = () => {
   var query = window.location.search.substring(1).split('=');
   const userID = query[query.length - 1];
+  console.log(userID);
   const [day, setDay] = React.useState(new Date());
   const [time, setTime] = React.useState(null);
   const [timeList, setTimeList] = React.useState([]);
@@ -68,6 +69,7 @@ export const Home = () => {
       getUserInfo(token).then((res) => {
         if (res.code === 1)
           findUser(userID).then((result) => {
+            console.log(result);
             if (result.length === 0) {
               insertUser(userID, res.firstname, res.lastname, res.phone, res.email);
             }

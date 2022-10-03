@@ -39,7 +39,7 @@ export const Home = () => {
   useEffect(() => {
     getAccessTokenV2(userID).then((tk) => console.log(tk));
     setToken('test');
-    if (timeList.length !== 0) {
+    if (timeList.length === 0) {
       FetchTimeRule().then((res) => {
         const start = timeConvertor(res[0]?.start);
         const end = timeConvertor(res[0]?.end);

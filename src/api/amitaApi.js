@@ -174,13 +174,11 @@ export async function calendarList(start, end) {
 }
 
 export async function getAccessTokenV2(code) {
-  console.log(code);
   return await axios
     .post(server + '/getToken', {
       code: code
     })
     .then((res) => {
-      console.log('test', res);
       if (res?.data.code === 1) {
         return res?.data.access_token;
       } else {

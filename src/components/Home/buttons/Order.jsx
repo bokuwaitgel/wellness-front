@@ -1,6 +1,5 @@
 import React from 'react';
-import { checkout } from '../../../api/miniAppApi';
-import { insertOrder } from '../../../api/amitaApi';
+import { insertOrder, checkout } from '../../../api/amitaApi';
 
 const saveOrder = (day, time, type, checkoutId, userId) => {
   const date = day.getFullYear() + '/' + (day.getMonth() + 1) + '/' + day.getDate();

@@ -4,8 +4,14 @@ import { Head } from '../components/Head';
 import { CompanyInfo } from '../components/Home/company/CompanyInfo';
 import { CompanyHeader } from '../components/Home/company/CompanyHeader';
 import { ChangeButton } from '../components/Home/buttons/changeButton';
-import { FetchTimeRule, findUser, insertUser, calendarList } from '../api/amitaApi';
-import { getAccessTokenV2, getUserInfo } from '../api/miniAppApi';
+import {
+  FetchTimeRule,
+  findUser,
+  insertUser,
+  calendarList,
+  getAccessTokenV2,
+  getUserInfo
+} from '../api/amitaApi';
 import { OrderList } from '../components/Home/order/OrderList';
 import { OrderCont } from '../components/Home/order/OrderCont';
 
@@ -29,9 +35,11 @@ export const Home = () => {
   const [end, setEnd] = React.useState('18:00:00');
   const [calendarData, setCalendarData] = React.useState([]);
   const [loader, setLoader] = React.useState(true);
+
   useEffect(() => {
-    getAccessTokenV2(userID).then((tk) => setToken(tk));
-    if (timeList.length === 0) {
+    getAccessTokenV2(userID).then((tk) => console.log(tk));
+    setToken('test');
+    if (timeList.length !== 0) {
       FetchTimeRule().then((res) => {
         const start = timeConvertor(res[0]?.start);
         const end = timeConvertor(res[0]?.end);

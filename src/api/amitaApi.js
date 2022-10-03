@@ -1,6 +1,6 @@
 import axios from 'axios';
-const server = 'https://amita-backend.herokuapp.com';
-// const server = 'localhost:4000';
+//const server = 'https://amita-backend.herokuapp.com';
+const server = 'localhost:4000';
 export async function FetchData() {
   return await axios
     .get(server + '/get')
@@ -167,6 +167,56 @@ export async function calendarList(start, end) {
     })
     .then((res) => {
       return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+export async function getAccessTokenV2(code) {
+  console.log(code);
+  return await axios
+    .post(server + '/getToken', {
+      code: code
+    })
+    .then((res) => {
+      console.log('test', res);
+      if (res?.code === 1) {
+        return res?.access_token;
+      } else {
+        return '';
+      }
+    })
+    .catch((error) => {
+      console.log('test', error);
+    });
+}
+export async function getUserInfo(token) {
+  return await axios
+    .post(server + '/getUserInfo', {
+      token: token
+    })
+    .then((res) => {
+      if (res?.data.code === 1) {
+        return res?.data;
+      } else {
+        return {};
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+export async function checkout() {
+  return await axios
+    .get(server + '/checkout')
+    .then((res) => {
+      console.log(res);
+      if (res?.data.code === 1) {
+        return res?.data;
+      } else {
+        return {};
+      }
     })
     .catch((error) => {
       console.log(error);

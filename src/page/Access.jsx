@@ -88,7 +88,6 @@ export const Access = () => {
         <div className="inline self-center">
           <CompanyHeader />
         </div>
-        {JSON.stringify(query)}
         {res == 0 ? (
           <div className="center">
             <RotatingLines

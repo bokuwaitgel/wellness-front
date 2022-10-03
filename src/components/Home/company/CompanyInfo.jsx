@@ -3,8 +3,8 @@ import React from 'react';
 export const CompanyInfo = () => {
   return (
     <div className="p-9">
-      <div className="text-left font-semibold">Байгуулгын тухай</div>
-      <div className="text-left text-justify">
+      <div className="text-left text-base font-semibold">Байгуулгын тухай</div>
+      <div className="text-left text-justify text-xs">
         Манай төв нь бүтэн биеийн оношлогоо /50,000 төгрөг/, бариа /нэг удаа 50,000 төгрөг/,
         хөдөлгөөн засал болон иог спортын дасгал зэрэг үйлчилгээнүүдтэй. Бид таны биеийг өөрсдийн
         тусгай оношилгоогоор үзсэнээр биеийн бүтэцтэйгээ шаардлагатай хэмжээнд танилцан түүн дээрээ

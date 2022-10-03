@@ -93,7 +93,7 @@ export const TimeList = (props) => {
         {loader ? (
           <div className="col-span-full center">
             <RotatingLines
-              strokeColor="green"
+              strokeColor="#07aeaa"
               strokeWidth="5"
               animationDuration="0.50"
               width="100"

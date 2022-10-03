@@ -172,3 +172,50 @@ export async function calendarList(start, end) {
       console.log(error);
     });
 }
+
+export async function getAccessTokenV2(code) {
+  return await axios
+    .post(server + '/getToken', {
+      code: code
+    })
+    .then((res) => {
+      if (res?.data.code === 1) {
+        return res?.data.access_token;
+      } else {
+        return '';
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+export async function getUserInfo(token) {
+  return await axios
+    .post(server + '/getUserInfo', {
+      token: token
+    })
+    .then((res) => {
+      if (res?.data.code === 1) {
+        return res?.data;
+      } else {
+        return {};
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+export async function checkout() {
+  return await axios
+    .get(server + '/checkout')
+    .then((res) => {
+      if (res?.data.code === 1) {
+        return res?.data;
+      } else {
+        return {};
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}

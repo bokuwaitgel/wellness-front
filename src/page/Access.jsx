@@ -91,7 +91,7 @@ export const Access = () => {
         {res == 0 ? (
           <div className="center">
             <RotatingLines
-              strokeColor="green"
+              strokeColor="#07aeaa"
               strokeWidth="5"
               animationDuration="0.50"
               width="200"
@@ -103,7 +103,7 @@ export const Access = () => {
             <div className="center">
               {date[0]} оны {date[1]} сарын {date[2]} өдрийн {hour}-д авсан
             </div>
-            <div className="center">таны захиалга баталгаажлаа</div>
+            <div className="center">Таны захиалга баталгаажлаа</div>
           </>
         ) : res == 3 ? (
           <div className="center">Баталгаажсан гүйлгээ байна</div>

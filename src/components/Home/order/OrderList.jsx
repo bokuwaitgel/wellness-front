@@ -19,20 +19,22 @@ export const OrderList = (props) => {
       {loader ? (
         <div className="center">
           <RotatingLines
-            strokeColor="green"
+            strokeColor="#07aeaa"
             strokeWidth="5"
             animationDuration="0.50"
             width="200"
             visible={true}
           />
         </div>
+      ) : orderList.length === 0 ? (
+        <div className={`space-x day-cont center`}>
+          <div className="center">Танд захиалгын түүх байхгүй байна</div>
+        </div>
       ) : (
         orderList.map((data, idx) => {
           const resDate = data.date.split('/');
           return (
-            <div
-              key={idx}
-              className={`flex space-x day-cont ${!data.paid ? 'bg-orange' : 'bg-green'}`}>
+            <div key={idx} className={`flex space-x day-cont ${!data.paid ? '' : 'bg-[#07aeaa]'}`}>
               <div className="pl-4 w-1/4">
                 {resDate[resDate.length - 2] + '/' + resDate[resDate.length - 1]}
               </div>

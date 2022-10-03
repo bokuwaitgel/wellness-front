@@ -303,7 +303,7 @@ svg.star-svg {
   padding: 6px 24px;
   width: 100%;
   background: rgba(27, 207, 180, 0.1);
-  color: #1bcfb4;
+  color: #07aeaa;
   border-radius: 4px;
 }
 .selected-time-button {
@@ -311,7 +311,7 @@ svg.star-svg {
   align-items: center;
   padding: 6px 24px;
   width: 100%;
-  background: #1bcfb4;
+  background: #07aeaa;
   color: white;
   border-radius: 4px;
 }
@@ -322,7 +322,7 @@ svg.star-svg {
   gap: 16px;
   width: 327px;
   height: 40px;
-  background: #1bcfb4;
+  background: #07aeaa;
   border-radius: 30px;
 }
 

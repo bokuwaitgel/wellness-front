@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { Head } from '../components/Head';
 import { CompanyInfo } from '../components/Home/company/CompanyInfo';
+import { Info } from '../components/Home/company/Info';
 import { CompanyHeader } from '../components/Home/company/CompanyHeader';
 import { ChangeButton } from '../components/Home/buttons/changeButton';
 import {
@@ -109,9 +110,7 @@ export const Home = () => {
             <OrderList orderList={orderList} setOrderList={setOrderList} userId={userID} />
           </div>
         )}
-        <div>
-          <CompanyInfo />
-        </div>
+        <div>{type == 0 ? <CompanyInfo /> : <Info />}</div>
       </div>
     </div>
   );

@@ -205,10 +205,10 @@ export async function getUserInfo(token) {
       console.log(error);
     });
 }
-export async function checkout(time) {
+export async function checkout(time, date) {
   return await axios
     .post(server + '/checkout', {
-      name: time
+      name: time + '/' + date
     })
     .then((res) => {
       if (res?.data.code === 1) {

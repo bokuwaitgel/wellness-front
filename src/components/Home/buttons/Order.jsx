@@ -10,7 +10,7 @@ export const Order = (props) => {
   const { day, time, text, type, userId } = props || {};
   const handleSubmit = () => {
     if (time !== null) {
-      checkout().then((res) => {
+      checkout(time).then((res) => {
         saveOrder(day, time, type, res.checkoutId, userId);
         window.hpsPayment(res.checkoutId);
       });

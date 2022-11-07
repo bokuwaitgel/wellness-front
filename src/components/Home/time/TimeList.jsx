@@ -78,7 +78,6 @@ export const TimeList = (props) => {
       const data = calendarData[i];
       const s = gTimeConcertor(data?.start?.dateTime),
         e = gTimeConcertor(data?.end?.dateTime);
-      console.log(s, e);
       if (s === Start && e === End) return false;
       if (s < Start && e > End) return false;
       if (s < Start && e > Start) return false;

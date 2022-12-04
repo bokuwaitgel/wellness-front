@@ -15,6 +15,7 @@ import {
 } from '../api/amitaApi';
 import { OrderList } from '../components/Home/order/OrderList';
 import { OrderCont } from '../components/Home/order/OrderCont';
+import { Class } from '../components/Home/class/Class';
 
 function timeConvertor(time) {
   if (!time) return 0;
@@ -105,9 +106,13 @@ export const Home = () => {
               setCalendarData={setCalendarData}
             />
           </div>
-        ) : (
+        ) : type === 1 ? (
           <div>
             <OrderList orderList={orderList} setOrderList={setOrderList} userId={userID} />
+          </div>
+        ) : (
+          <div>
+            <Class />
           </div>
         )}
         <div>{type == 0 ? <CompanyInfo /> : <Info />}</div>

@@ -15,11 +15,18 @@ export const ChangeButton = (props) => {
         <div>Цаг захиалга</div>
       </div>
       <div
-        className={`p-1 w-1/2 rounded-r-full border-l-1 border-[#243c5a] align-middle center' + ${
+        className={`p-1 w-1/2 border-l-1 border-[#243c5a] align-middle center' + ${
           type === 1 ? 'bg-[#07aeaa] text-white' : null
         }`}
         onClick={() => setType(1)}>
         <div>Захиалгын мэдээлэл</div>
+      </div>
+      <div
+        className={`p-1 w-1/2 rounded-r-full border-l-1 border-[#243c5a] align-middle center' + ${
+          type === 2 ? 'bg-[#07aeaa] text-white' : null
+        }`}
+        onClick={() => setType(2)}>
+        <div>Ангийн хөтөлбөр</div>
       </div>
     </div>
   );

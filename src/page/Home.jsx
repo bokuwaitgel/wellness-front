@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { Head } from '../components/Head';
 import { CompanyInfo } from '../components/Home/company/CompanyInfo';
+import { Info } from '../components/Home/company/Info';
 import { CompanyHeader } from '../components/Home/company/CompanyHeader';
 import { ChangeButton } from '../components/Home/buttons/changeButton';
 import {
@@ -14,6 +15,7 @@ import {
 } from '../api/amitaApi';
 import { OrderList } from '../components/Home/order/OrderList';
 import { OrderCont } from '../components/Home/order/OrderCont';
+import { Class } from '../components/Home/class/Class';
 
 function timeConvertor(time) {
   if (!time) return 0;
@@ -32,8 +34,8 @@ export const Home = () => {
   const [type, setType] = React.useState(0);
   const [orderList, setOrderList] = React.useState([]);
   const [delay, setDelay] = React.useState('01:00:00');
-  const [start, setStart] = React.useState('08:00:00');
-  const [end, setEnd] = React.useState('18:00:00');
+  const [start, setStart] = React.useState('09:00:00');
+  const [end, setEnd] = React.useState('20:00:00');
   const [calendarData, setCalendarData] = React.useState([]);
   const [loader, setLoader] = React.useState(true);
 
@@ -106,14 +108,16 @@ export const Home = () => {
               setCalendarData={setCalendarData}
             />
           </div>
-        ) : (
+        ) : type === 1 ? (
           <div>
             <OrderList orderList={orderList} setOrderList={setOrderList} userId={userID} />
           </div>
+        ) : (
+          <div>
+            <Class />
+          </div>
         )}
-        <div>
-          <CompanyInfo />
-        </div>
+        <div>{type == 0 ? <CompanyInfo /> : <Info />}</div>
       </div>
     </div>
   );

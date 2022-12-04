@@ -65,7 +65,7 @@ export const TimeList = (props) => {
 
   useEffect(() => {
     setFilteredTime(
-      time.filter(
+      time?.filter(
         (data) => findTime(data, data + timeConvertor(delay)) && (today ? limit < data : true)
       )
     );
@@ -73,11 +73,11 @@ export const TimeList = (props) => {
   }, [calendarData]);
 
   function findTime(Start, End) {
-    const len = calendarData.length || 0;
+    const len = calendarData?.length || 0;
     for (let i = 0; i < len; i++) {
       const data = calendarData[i];
-      const s = gTimeConcertor(data.start.dateTime),
-        e = gTimeConcertor(data.end.dateTime);
+      const s = gTimeConcertor(data?.start?.dateTime),
+        e = gTimeConcertor(data?.end?.dateTime);
       if (s === Start && e === End) return false;
       if (s < Start && e > End) return false;
       if (s < Start && e > Start) return false;
@@ -93,7 +93,7 @@ export const TimeList = (props) => {
         {loader ? (
           <div className="col-span-full center">
             <RotatingLines
-              strokeColor="green"
+              strokeColor="#07aeaa"
               strokeWidth="5"
               animationDuration="0.50"
               width="100"

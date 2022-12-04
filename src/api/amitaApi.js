@@ -205,9 +205,11 @@ export async function getUserInfo(token) {
       console.log(error);
     });
 }
-export async function checkout() {
+export async function checkout(time, date) {
   return await axios
-    .get(server + '/checkout')
+    .post(server + '/checkout', {
+      name: time + '/' + date
+    })
     .then((res) => {
       if (res?.data.code === 1) {
         return res?.data;
